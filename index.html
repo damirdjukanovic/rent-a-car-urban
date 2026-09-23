@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="bs" class="scroll-smooth">
+
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Rent a car Urban Drive - najpovoljnije iznajmljivanje vozila u Sarajevu i širom BiH. Rezerviši online brzo i jednostavno.">
+  <meta name="keywords"
+    content="rentacar, rent a car, iznajmljivanje auta, iznajmite vozilo, Sarajevo, auto, Urban Drive, BiH">
+  <meta property="og:title" content="Rent a Car Urban Drive | Sarajevo i BiH">
+  <meta property="og:description"
+    content="Najpovoljnije iznajmljivanje vozila u Sarajevu. Moderna flota, online rezervacija, dostupnost širom BiH.">
+    <meta name="robots" content="index, follow">
+
+  <meta property="og:image" content="https://urbandrive.ba/assets/img/hero-car.jpg">
+  <meta property="og:url" content="https://urbandrive.ba/">
+  <meta property="og:type" content="website">
+
+
+  <title>Rent a Car Urban Drive</title>
+  <link rel="icon" type="image/x-icon" href="https://urbandrive.ba/assets/img/favicon.ico" />
+
+  <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+
+    body.modal-open {
+      overflow: hidden;
+    }
+  </style>
+</head>
+
+<body class="bg-white text-gray-900">
+
+
+  <!-- Header -->
+  <header class="bg-white shadow fixed top-0 w-full z-50">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex flex-nowrap justify-between items-center gap-2 overflow-x-auto">
+
+      <a href="index.html"
+        class="text-xl font-bold whitespace-nowrap bg-gradient-to-r from-blue-900 to-sky-500 text-transparent bg-clip-text shrink-0">
+        Urban Drive
+      </a>
+
+      <nav class="hidden md:flex space-x-6 text-sm font-medium">
+        <a href="#hero" class="hover:text-blue-600">Početna</a>
+        <a href="#cars" class="hover:text-blue-600">Vozila</a>
+        <a href="#services" class="hover:text-blue-600">Usluge</a>
+        <a href="#faq" class="hover:text-blue-600">FAQ</a>
+        <a href="#location" class="hover:text-blue-600">Lokacije</a>
+        <a href="#contact" class="hover:text-blue-600">Kontakt</a>
+      </nav>
+
+      <div class="flex items-center gap-2 text-xs whitespace-nowrap shrink-0">
+        <div class="flex gap-1 font-medium">
+          <button onclick="switchLanguage('bs')" class="hover:text-blue-600">BA</button> |
+          <button onclick="switchLanguage('en')" class="hover:text-blue-600">EN</button>
+        </div>
+
+        <a href="javascript:void(0)" onclick="otvoriKontaktModal()"
+          class="bg-blue-600 text-white px-3 py-1.5 rounded hover:bg-blue-700 transition whitespace-nowrap text-xs">
+          Kontaktirajte nas
+        </a>
+
+        <button id="menuBtn" class="md:hidden text-xl text-blue-700 focus:outline-none">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobilni meni -->
+    <div id="mobileMenu"
+      class="md:hidden max-h-0 overflow-hidden opacity-0 transition-[max-height,opacity] duration-300 ease-in-out will-change-[max-height,opacity] px-4">
+      <nav class="flex flex-col space-y-2 text-sm font-medium py-4">
+        <a href="#hero" class="hover:text-blue-600">Početna</a>
+        <a href="#cars" class="hover:text-blue-600">Vozila</a>
+        <a href="#services" class="hover:text-blue-600">Usluge</a>
+        <a href="#faq" class="hover:text-blue-600">FAQ</a>
+        <a href="#location" class="hover:text-blue-600">Lokacija</a>
+        <a href="#contact" class="hover:text-blue-600">Kontakt</a>
+      </nav>
+    </div>
+  </header>
+
+
+
+
+  <!-- Hero Sekcija -->
+  <section id="hero" class="relative pt-24 min-h-screen bg-cover bg-center"
+    style="background-image: url('assets/img/hero-car.jpg');">
+    <div class="absolute inset-0 bg-blue-900 opacity-70 z-0"></div>
+    <div class="relative z-10 max-w-7xl mx-auto px-4 text-white flex flex-col lg:flex-row items-center justify-between">
+      <div class="lg:w-1/2 text-center lg:text-left pt-6 mb-10 lg:mb-0 pb-10">
+
+
+        <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-4">
+          Iznajmite vozilo po vašoj <span class="text-blue-300">mjeri</span>
+        </h1>
+        <p class="text-lg md:text-xl mb-6">
+          Istražite Bosnu i Hercegovinu sa našom modernom flotom vozila.<br />
+          Jednostavna rezervacija, pristupačne cijene i besprijekorna usluga.
+        </p>
+
+        <!-- Prva grupa benefita -->
+        <div class="flex flex-wrap gap-3 text-sm font-medium justify-center lg:justify-start mb-6">
+          <span class="bg-white/20 px-3 py-1 rounded-full flex items-center gap-2">
+            <i class="fa-solid fa-truck text-green-400"></i> Besplatna dostava
+          </span>
+          <span class="bg-white/20 px-3 py-1 rounded-full flex items-center gap-2">
+            <i class="fa-solid fa-car text-green-400"></i> Nova vozila
+          </span>
+          <span class="bg-white/20 px-3 py-1 rounded-full flex items-center gap-2">
+            <i class="fa-solid fa-headset text-green-400"></i> 24/7 podrška
+          </span>
+          <span class="bg-white/20 px-3 py-1 rounded-full flex items-center gap-2">
+            <i class="fa-solid fa-shield-halved text-green-400"></i> Puno osiguranje
+          </span>
+        </div>
+
+        <!-- Transferi -->
+        <h2 class="text-xl font-semibold mb-3">Transferi</h2>
+        <div class="flex flex-wrap gap-3 text-sm font-medium justify-center lg:justify-start">
+          <span class="bg-white/20 px-3 py-1 rounded-full flex items-center gap-2">
+            <i class="fa-solid fa-user-tie text-blue-400"></i> VIP transferi
+          </span>
+          <span class="bg-white/20 px-3 py-1 rounded-full flex items-center gap-2">
+            <i class="fa-solid fa-plane text-blue-400"></i> Aerodromski transferi
+          </span>
+          <span class="bg-white/20 px-3 py-1 rounded-full flex items-center gap-2">
+            <i class="fa-solid fa-globe text-blue-400"></i> Međunarodni transferi
+          </span>
+        </div>
+
+      </div>
+
+
+      <!-- Forma -->
+      <div class="bg-white text-gray-900 p-6 md:p-8 rounded-xl shadow-lg w-full max-w-md">
+        <h2 class="text-xl font-semibold mb-4">Rezerviši vozilo</h2>
+        <form class="grid grid-cols-1 gap-4">
+          <div>
+            <label class="block mb-1 font-semibold text-sm">Lokacija preuzimanja</label>
+            <div class="relative">
+              <select id="hero-lokacija" class="w-full border rounded px-3 py-2 appearance-none" required>
+                <option value="" selected hidden>Odaberite lokaciju</option>
+                <option value="Sarajevo - po dogovoru">Sarajevo - Adresa po dogovoru</option>
+                <option value="Mostar - po dogovoru">Mostar - Adresa po dogovoru</option>
+                <option value="Banja Luka - po dogovoru">Banja Luka - Adresa po dogovoru</option>
+                <option value="Tuzla - po dogovoru">Tuzla - Adresa po dogovoru</option>
+              </select>
+              <i class="fa-solid fa-chevron-down absolute right-3 top-3 text-gray-500 pointer-events-none"></i>
+            </div>
+            <div id="lokacija-error" class="text-red-600 text-sm mt-1 hidden">Molimo odaberite lokaciju.</div>
+          </div>
+
+
+
+          <div>
+            <label class="block text-sm font-medium mb-1">Datum preuzimanja</label>
+            <input type="datetime-local" id="hero-od" class="w-full border rounded px-3 py-2 cursor-pointer" required
+              onclick="this.showPicker && this.showPicker()" min="" />
+          </div>
+
+          <div>
+            <label class="block text-sm font-medium mb-1">Datum vraćanja</label>
+            <input type="datetime-local" id="hero-do" class="w-full border rounded px-3 py-2 cursor-pointer" required
+              onclick="this.showPicker && this.showPicker()" min="" />
+          </div>
+
+
+
+
+
+          <div>
+            <label class="block mb-1 font-semibold text-sm">Broj putnika</label>
+            <div class="flex items-center border rounded px-2 py-1">
+              <button type="button" class="text-lg px-2 font-bold" onclick="adjustPassengers(-1)">−</button>
+              <input id="passenger-count" type="number" min="1" value="1" class="w-12 text-center border-0" readonly />
+              <button type="button" class="text-lg px-2 font-bold" onclick="adjustPassengers(1)">+</button>
+            </div>
+          </div>
+          <div>
+            <button id="search-submit-btn" type="submit"
+              class="bg-blue-700 text-white w-full py-2 rounded hover:bg-blue-800 transition">
+              Pretraži dostupna vozila
+            </button>
+
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- Sekcija: Naša vozila -->
+  <section id="cars" class="bg-gradient-to-b from-white to-gray-50 py-16">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center text-gray-900 mb-2">Naša vozila</h2>
+      <p class="text-center text-gray-600 mb-6">
+        Izaberite vozilo koje odgovara vašim potrebama iz naše raznovrsne ponude
+        modernih i pouzdanih automobila.
+      </p>
+
+      <!-- Filteri po tipu -->
+      <div class="flex flex-wrap justify-center gap-3 mb-6">
+        <button class="filter-btn bg-blue-600 text-white px-4 py-1 rounded-full text-sm"
+          data-tip="Najnovija">Najnovija</button>
+        <button class="filter-btn bg-gray-200 text-gray-700 px-4 py-1 rounded-full text-sm" data-tip="Sva">Sva</button>
+        <button class="filter-btn bg-gray-200 text-gray-700 px-4 py-1 rounded-full text-sm"
+          data-tip="Ekonomska">Ekonomska</button>
+        <button class="filter-btn bg-gray-200 text-gray-700 px-4 py-1 rounded-full text-sm" data-tip="SUV">SUV</button>
+        <button class="filter-btn bg-gray-200 text-gray-700 px-4 py-1 rounded-full text-sm"
+          data-tip="Luksuzna">Luksuzna</button>
+        <button class="filter-btn bg-gray-200 text-gray-700 px-4 py-1 rounded-full text-sm"
+          data-tip="Kombi">Kombi</button>
+      </div>
+
+      <!-- Filteri po mjenjaču i sjedištima -->
+      <div class="flex flex-wrap justify-center gap-6 mb-10">
+        <div class="flex items-center gap-2">
+          <span class="text-sm font-medium">Mjenjač:</span>
+          <button class="mjenjac-btn bg-blue-600 text-white px-3 py-1 rounded text-sm" data-mjenjac="Svi">Svi</button>
+          <button class="mjenjac-btn bg-gray-200 text-gray-700 px-3 py-1 rounded text-sm"
+            data-mjenjac="Automatik">Automatik</button>
+          <button class="mjenjac-btn bg-gray-200 text-gray-700 px-3 py-1 rounded text-sm"
+            data-mjenjac="Manuelni">Manuelni</button>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="text-sm font-medium">Sjedišta:</span>
+          <select id="filter-sjedista" class="text-sm border px-2 py-1 rounded">
+            <option value="Svi">Svi</option>
+            <option value="5">5</option>
+            <option value="7">7</option>
+            <option value="7+">7+</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Kontejner za vozila -->
+      <div id="vozila-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Dinamički sadržaj ide ovdje putem JS-a -->
+      </div>
+
+
+
+    </div>
+    </div>
+  </section>
+
+  <!-- Sekcija: Naše usluge -->
+  <section id="services" class="bg-gray-50 py-16">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+      <h2 class="text-3xl font-bold text-gray-900 mb-2">Naše usluge</h2>
+      <p class="text-gray-600 mb-10">
+        Pružamo širok spektar usluga prilagođenih vašim potrebama za mobilnošću i
+        putovanjima.
+      </p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div
+          class="bg-white p-6 rounded-lg shadow hover:shadow-lg hover:-translate-y-1 transform transition duration-200">
+          <div class="text-blue-600 text-2xl mb-3"><i class="fa-solid fa-car"></i></div>
+          <h3 class="text-lg font-semibold mb-2">Iznajmljivanje vozila</h3>
+          <p class="text-sm text-gray-600 mb-3">
+            Širok izbor modernih vozila za kratkoročni ili dugoročni najam. Fleksibilni uslovi i konkurentne cijene.
+          </p>
+        </div>
+
+        <div
+          class="bg-white p-6 rounded-lg shadow hover:shadow-lg hover:-translate-y-1 transform transition duration-200">
+          <div class="text-blue-600 text-2xl mb-3"><i class="fa-solid fa-user-tie"></i></div>
+          <h3 class="text-lg font-semibold mb-2">VIP transferi</h3>
+          <p class="text-sm text-gray-600 mb-3">
+            Luksuzni transferi sa profesionalnim vozačem za poslovne korisnike i posebne događaje.
+          </p>
+        </div>
+
+        <div
+          class="bg-white p-6 rounded-lg shadow hover:shadow-lg hover:-translate-y-1 transform transition duration-200">
+          <div class="text-blue-600 text-2xl mb-3"><i class="fa-solid fa-plane"></i></div>
+          <h3 class="text-lg font-semibold mb-2">Aerodromski transferi</h3>
+          <p class="text-sm text-gray-600 mb-3">
+            Pouzdani transferi sa aerodroma do vaše željene lokacije. Pratimo letove i dolazimo vas čekati u tačno
+            vrijeme.
+          </p>
+        </div>
+
+        <div
+          class="bg-white p-6 rounded-lg shadow hover:shadow-lg hover:-translate-y-1 transform transition duration-200">
+          <div class="text-blue-600 text-2xl mb-3"><i class="fa-solid fa-id-card"></i></div>
+          <h3 class="text-lg font-semibold mb-2">Najam sa vozačem</h3>
+          <p class="text-sm text-gray-600 mb-3">
+            Profesionalni vozači koji poznaju lokalne puteve i destinacije. Idealno za poslovne i turističke potrebe.
+          </p>
+        </div>
+
+        <div
+          class="bg-white p-6 rounded-lg shadow hover:shadow-lg hover:-translate-y-1 transform transition duration-200">
+          <div class="text-blue-600 text-2xl mb-3"><i class="fa-solid fa-building"></i></div>
+          <h3 class="text-lg font-semibold mb-2">Ponude za firme</h3>
+          <p class="text-sm text-gray-600 mb-3">
+            Posebne ponude za poslovne korisnike, hotele i dugoročne korisnike. Kontaktirajte nas za personalizovane
+            ponude.
+          </p>
+        </div>
+
+        <div
+          class="bg-white p-6 rounded-lg shadow hover:shadow-lg hover:-translate-y-1 transform transition duration-200">
+          <div class="text-blue-600 text-2xl mb-3"><i class="fa-solid fa-route"></i></div>
+          <h3 class="text-lg font-semibold mb-2">Organizovanje izleta</h3>
+          <p class="text-sm text-gray-600 mb-3">
+            Dnevne ture i izleti na popularne destinacije u Bosni i Hercegovini. Istražite prirodne ljepote i kulturno
+            naslijeđe.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Sekcija: Često postavljana pitanja (FAQ) -->
+  <section id="faq" class="bg-white py-16">
+    <div class="max-w-3xl mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center text-gray-900 mb-10">Često postavljana pitanja</h2>
+
+      <div class="space-y-4">
+        <!-- Pitanje 1 -->
+        <div class="border rounded-lg overflow-hidden">
+          <button
+            class="w-full flex justify-between items-center px-4 py-3 text-left font-semibold text-gray-800 bg-gray-100 focus:outline-none faq-toggle">
+            Kako mogu rezervisati vozilo?
+            <span class="text-blue-600"><i class="fa-solid fa-chevron-down"></i></span>
+          </button>
+          <div class="hidden px-4 py-3 text-sm text-gray-700 faq-answer">
+            Možete rezervisati vozilo putem naše online forme, pozivom na naš broj telefona ili posjetom našoj lokaciji.
+          </div>
+        </div>
+        <!-- Pitanje 2 -->
+        <div class="border rounded-lg overflow-hidden">
+          <button
+            class="w-full flex justify-between items-center px-4 py-3 text-left font-semibold text-gray-800 bg-gray-100 focus:outline-none faq-toggle">
+            Koje dokumente trebam za iznajmljivanje automobila?
+            <span class="text-blue-600"><i class="fa-solid fa-chevron-down"></i></span>
+          </button>
+          <div class="hidden px-4 py-3 text-sm text-gray-700 faq-answer">
+            Za iznajmljivanje automobila potrebno je imati važeći pasoš, vozačku dozvolu i pečat o ulasku u BiH. Ukoliko
+            ste
+            državljanin BiH, potrebni su lična karta i vozačka dozvola.
+          </div>
+        </div>
+
+        <!-- Pitanje 3 -->
+        <div class="border rounded-lg overflow-hidden">
+          <button
+            class="w-full flex justify-between items-center px-4 py-3 text-left font-semibold text-gray-800 bg-gray-100 focus:outline-none faq-toggle">
+            Koja je minimalna starost za iznajmljivanje vozila?
+            <span class="text-blue-600"><i class="fa-solid fa-chevron-down"></i></span>
+          </button>
+          <div class="hidden px-4 py-3 text-sm text-gray-700 faq-answer">
+            Minimalna starost za iznajmljivanje vozila je 21 godina sa važećom vozačkom dozvolom najmanje 2 godine.
+          </div>
+        </div>
+
+        <!-- Pitanje 4 -->
+        <div class="border rounded-lg overflow-hidden">
+          <button
+            class="w-full flex justify-between items-center px-4 py-3 text-left font-semibold text-gray-800 bg-gray-100 focus:outline-none faq-toggle">
+            Da li postoji ograničenje kilometraže
+            <span class="text-blue-600"><i class="fa-solid fa-chevron-down"></i></span>
+          </button>
+          <div class="hidden px-4 py-3 text-sm text-gray-700 faq-answer">
+            Kilometraža nije ograničena. Međutim, potrebno je unaprijed obavijestiti
+            ukoliko se planira prelazak većeg broja kilometara.
+          </div>
+        </div>
+
+        <!-- Pitanje 5 -->
+        <div class="border rounded-lg overflow-hidden">
+          <button
+            class="w-full flex justify-between items-center px-4 py-3 text-left font-semibold text-gray-800 bg-gray-100 focus:outline-none faq-toggle">
+            Koji su uslovi za osiguranje vozila?
+            <span class="text-blue-600"><i class="fa-solid fa-chevron-down"></i></span>
+          </button>
+          <div class="hidden px-4 py-3 text-sm text-gray-700 faq-answer">
+            Vozila su osigurana, a nivo osiguranja zavisi od cijene.
+          </div>
+        </div>
+
+        <!-- Pitanje 6 -->
+        <div class="border rounded-lg overflow-hidden">
+          <button
+            class="w-full flex justify-between items-center px-4 py-3 text-left font-semibold text-gray-800 bg-gray-100 focus:outline-none faq-toggle">
+            Mogu li preuzeti vozilo na jednoj lokaciji, a vratiti ga na drugoj?
+            <span class="text-blue-600"><i class="fa-solid fa-chevron-down"></i></span>
+          </button>
+          <div class="hidden px-4 py-3 text-sm text-gray-700 faq-answer">
+            Vozilo se može preuzeti na jednoj lokaciji,a uz nadoplatu i prethodnu najavu vratiti na drugoj lokaciji.
+            Visina nadoplate zavisi od lokacije na kojoj se vozilo vraća.
+          </div>
+        </div>
+
+        <!-- Pitanje 7 -->
+        <div class="border rounded-lg overflow-hidden">
+          <button
+            class="w-full flex justify-between items-center px-4 py-3 text-left font-semibold text-gray-800 bg-gray-100 focus:outline-none faq-toggle">
+            Šta se događa ako dođe do saobraćajne nesreće ili kvara?
+            <span class="text-blue-600"><i class="fa-solid fa-chevron-down"></i></span>
+          </button>
+          <div class="hidden px-4 py-3 text-sm text-gray-700 faq-answer">
+            U slučaju saobraćajne nesreće, uslovi osiguranja navedeni su u ugovoru koji dobijate prije iznajmljivanja
+            vozila. Ako ne poštujete ugovor,
+            troškove snosi vozač. Troškove potrošnog materijala i kvarova koji nisu nastali greškom vozača snosi
+            najmodavac.
+          </div>
+        </div>
+
+        <!-- Pitanje 8 -->
+        <div class="border rounded-lg overflow-hidden">
+          <button
+            class="w-full flex justify-between items-center px-4 py-3 text-left font-semibold text-gray-800 bg-gray-100 focus:outline-none faq-toggle">
+            Da li vozila dolaze sa punim rezervoarom?
+            <span class="text-blue-600"><i class="fa-solid fa-chevron-down"></i></span>
+          </button>
+          <div class="hidden px-4 py-3 text-sm text-gray-700 faq-answer">
+            Vozila se iznajmljuju sa postojećim stanjem goriva i potrebno je da se vrate u istom stanju.
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Sekcija: Naša lokacija -->
+  <section id="location" class="b g-gray-50 py-16">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center text-gray-900 mb-10">Naša lokacija</h2>
+
+      <div class="grid md:grid-cols-2 gap-8 items-center">
+        <!-- Google Mapa -->
+        <div class="w-full h-[450px] border border-gray-300 rounded-lg overflow-hidden shadow">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2870.123456789!2d18.3234567!3d43.8512345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4758c123456789ab%3A0xabcdef1234567890!2sKurta%20Schorka%2036%2C%20Sarajevo!5e0!3m2!1sen!2sba!4v1620000000000!5m2!1sen!2sba"
+            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+
+
+        <!-- Detalji lokacije -->
+        <div class="bg-white p-6 rounded-lg shadow">
+          <h3 class="text-xl font-semibold mb-4 text-center md:text-left">Naša lokacija</h3>
+          <div class="text-gray-700 space-y-6 text-sm text-center md:text-left">
+            <!-- Lokacija -->
+            <div class="grid grid-cols-[auto_1fr] gap-2 items-start">
+              <i class="fa-solid fa-location-dot text-blue-600 text-lg"></i>
+              <div class="pl-1 ">
+                <div class="font-semibold">Kurta Schorka 36, Sarajevo</div>
+                <div>Novi Grad, Sarajevo</div>
+              </div>
+
+            </div>
+
+            <!-- Radno vrijeme -->
+            <div class="grid grid-cols-[auto_1fr] gap-2 items-start">
+              <i class="fa-solid fa-clock text-blue-600 text-lg"></i>
+              <div>
+                <div class="font-semibold">Radno vrijeme:</div>
+                <div>Pon - Pet: 08:00 – 20:00</div>
+                <div>Subotom: 09:00 – 17:00</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Dostava vozila -->
+      <div
+        class="mt-8 bg-white p-6 rounded-lg shadow flex flex-col items-center text-center md:flex-row md:items-center md:justify-between md:text-left md:items-start gap-4">
+        <div>
+          <h4 class="font-semibold text-gray-800 mb-1">Dostava vozila</h4>
+          <p class="text-sm text-gray-600">
+            Nudimo besplatnu dostavu vozila na vašu adresu, hotel ili aerodrom u svim većim gradovima u Bosni i
+            Hercegovini.
+          </p>
+        </div>
+        <div class="flex gap-3 flex-wrap justify-center md:justify-end">
+          <a href="javascript:void(0)" onclick="otvoriKontaktModal()"
+            class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 text-sm">
+            <i class="fa-solid fa-phone mr-1"></i> Nazovite nas
+          </a>
+
+          <a href="https://wa.me/38761106890" target="_blank"
+            class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 text-sm">
+            <i class="fa-brands fa-whatsapp mr-1"></i> WhatsApp
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+
+  <!-- Footer -->
+  <footer id="contact" class="bg-gray-900 text-gray-300 pt-10 pb-6">
+    <div
+      class="max-w-4xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-48 items-start text-center md:text-left">
+
+      <!-- Lijeva kolona: Brend i društvene mreže -->
+      <div class="space-y-4">
+        <h3 class="text-xl font-semibold text-white">Urban Drive</h3>
+        <p class="text-sm">Najbolja rent-a-car usluga u Bosni i Hercegovini. Nudimo širok izbor vozila za sve vaše
+          potrebe.</p>
+        <div class="flex justify-center md:justify-start space-x-4 text-xl">
+          <a href="https://www.facebook.com/RentacarUrbanDrive" class="hover:text-white" target="_blank">
+            <i class="fa-brands fa-facebook-f"></i>
+          </a>
+          <a href="https://www.instagram.com/rent_a_car_urbandrive/" class="hover:text-white" target="_blank">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+          <a href="http://tiktok.com/@rentacarurbandrivebosnia" class="hover:text-white" target="_blank">
+            <i class="fa-brands fa-tiktok"></i>
+          </a>
+        </div>
+        <div class="flex justify-center md:justify-start">
+          <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
+            class="mt-2 px-4 py-2 border text-sm rounded border-gray-600 hover:bg-gray-800 transition">
+            <i class="fa-solid fa-chevron-up mr-2"></i>Back to Top
+          </button>
+        </div>
+      </div>
+
+      <!-- Desna kolona: Kontakt informacije -->
+      <div class="space-y-2">
+        <h4 class="text-sm font-semibold text-white mb-2">Kontaktirajte nas</h4>
+        <ul class="space-y-2 text-sm">
+          <li><i class="fa-solid fa-location-dot text-blue-500 mr-2"></i> Kurta Schorka 36, Sarajevo</li>
+          <li><i class="fa-solid fa-phone text-blue-500 mr-2"></i> +387 61 106 890</li>
+          <li><i class="fa-solid fa-envelope text-blue-500 mr-2"></i> rentacarurbandrive@gmail.com</li>
+          <li><i class="fa-solid fa-clock text-blue-500 mr-2"></i> Pon - Pet: 08:00 - 20:00, Sub: 09:00 - 17:00</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="text-center text-sm text-gray-500 mt-10 border-t border-gray-700 pt-4">
+      &copy; 2025 Urban Drive. Sva prava zadržana.
+    </div>
+  </footer>
+
+
+
+
+
+  <!-- Kontakt Krug -->
+  <div id="contact-fab" class="fixed bottom-6 right-6 flex flex-col items-center space-y-3 z-50">
+    <!-- Kontakt opcije -->
+    <div id="contact-options"
+      class="flex flex-col items-center space-y-2 opacity-0 translate-y-4 pointer-events-none transition-all duration-300">
+      <a href="https://wa.me/38761106890" target="_blank"
+        class="w-12 h-12 rounded-full bg-[#0072c6] text-white flex items-center justify-center shadow-lg hover:bg-[#00a3e0] transition">
+        <i class="fa-brands fa-whatsapp text-xl"></i>
+      </a>
+
+      <a href="viber://chat?number=+38761106890"
+        class="w-12 h-12 rounded-full bg-[#0072c6] text-white flex items-center justify-center shadow-lg hover:bg-[#00a3e0] transition">
+        <i class="fa-brands fa-viber text-xl"></i>
+      </a>
+
+    </div>
+
+    <!-- Glavno dugme -->
+    <button id="main-btn"
+      class="w-14 h-14 rounded-full bg-[#004f8f] text-white text-2xl shadow-lg flex items-center justify-center hover:bg-[#00a3e0] transition">
+      <i class="fa-solid fa-comment"></i>
+    </button>
+  </div>
+
+  <!-- MODAL -->
+  <div id="rezervacija-modal" class="fixed inset-0 bg-black/60 flex items-center justify-center z-50 hidden">
+    <div id="rezervacija-modal-content"
+      class="bg-white rounded-xl p-6 w-full max-w-md shadow-xl text-gray-800 relative transform scale-95 opacity-0 transition-all duration-300">
+
+      <button onclick="zatvoriModal()"
+        class="absolute top-2 right-3 text-gray-400 hover:text-gray-700 text-xl">&times;</button>
+
+      <h2 class="text-xl font-semibold mb-4">Provjera dostupnosti</h2>
+
+      <form id="provjera-form" class="space-y-4">
+        <!-- ✅ Lokacija -->
+        <div>
+          <label class="block text-sm font-medium mb-1">Lokacija preuzimanja</label>
+          <select id="modal-lokacija" class="w-full border rounded px-3 py-2" required>
+            <option disabled selected>Odaberite lokaciju</option>
+            <option>Sarajevo - po dogovoru</option>
+            <option>Mostar - po dogovoru</option>
+            <option>Banja Luka - po dogovoru</option>
+            <option>Tuzla - po dogovoru</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium mb-1">Datum preuzimanja</label>
+          <input type="datetime-local" id="modal-od" class="w-full border rounded px-3 py-2 cursor-pointer" required
+            onclick="this.showPicker && this.showPicker()" min="" />
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium mb-1">Datum vraćanja</label>
+          <input type="datetime-local" id="modal-do" class="w-full border rounded px-3 py-2 cursor-pointer" required
+            onclick="this.showPicker && this.showPicker()" min="" />
+        </div>
+
+        <div id="rezultat-provjere" class="mt-4 text-center font-semibold"></div>
+
+        <button type="submit"
+          class="bg-blue-700 text-white py-2 px-4 rounded w-full hover:bg-blue-800">Provjeri</button>
+      </form>
+    </div>
+  </div>
+
+
+
+  <!-- MODAL ZA KONTAKT -->
+  <div id="kontakt-modal" class="fixed inset-0 bg-black/60 hidden items-center justify-center z-50">
+    <div id="kontakt-modal-content"
+      class="bg-white rounded-xl p-6 w-full max-w-sm text-center shadow-xl relative transform scale-95 opacity-0 transition-all duration-300">
+      <button onclick="zatvoriKontaktModal()"
+        class="absolute top-2 right-3 text-gray-400 hover:text-gray-700 text-xl">&times;</button>
+      <h2 class="text-xl font-semibold mb-4">Kontaktirajte nas</h2>
+
+      <div class="space-y-4 text-sm">
+        <a href="tel:+38761106890"
+          class="block bg-blue-600 text-white px-4 py-3 rounded hover:bg-blue-700 transition font-semibold">
+          +387 61 106 890
+        </a>
+      </div>
+    </div>
+  </div>
+
+
+  <script>
+    function otvoriKontaktModal() {
+      const modal = document.getElementById("kontakt-modal");
+      const content = document.getElementById("kontakt-modal-content");
+
+      modal.classList.remove("hidden");
+      modal.classList.add("flex");
+
+      // Pokreće animaciju
+      setTimeout(() => {
+        content.classList.remove("scale-95", "opacity-0");
+        content.classList.add("scale-100", "opacity-100");
+      }, 10);
+
+      document.body.classList.add("modal-open");
+    }
+
+
+    function zatvoriKontaktModal() {
+      const modal = document.getElementById("kontakt-modal");
+      const content = document.getElementById("kontakt-modal-content");
+
+      // Pokreće zatvaranje animacije
+      content.classList.remove("scale-100", "opacity-100");
+      content.classList.add("scale-95", "opacity-0");
+
+      // Nakon završetka animacije sakrij modal
+      setTimeout(() => {
+        modal.classList.add("hidden");
+        modal.classList.remove("flex");
+        document.body.classList.remove("modal-open");
+      }, 300); // Mora biti ista kao duration u klasi
+    }
+
+
+  </script>
+
+
+  <script>
+    // Postavi minimalni datum na trenutno vrijeme
+    const now = new Date();
+    now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
+    const isoNow = now.toISOString().slice(0, 16);
+
+    document.getElementById("hero-od").min = isoNow;
+    document.getElementById("hero-do").min = isoNow;
+    document.getElementById("modal-od").min = isoNow;
+    document.getElementById("modal-do").min = isoNow;
+
+    // Postavi minimalni datum vraćanja nakon promjene datuma preuzimanja
+    document.getElementById("modal-od").addEventListener("change", function () {
+      const selectedOd = new Date(this.value);
+      if (!isNaN(selectedOd)) {
+        selectedOd.setMinutes(selectedOd.getMinutes() + 1); // minimalno 1 min kasnije
+        const minDo = selectedOd.toISOString().slice(0, 16);
+        const doInput = document.getElementById("modal-do");
+        doInput.min = minDo;
+
+        if (doInput.value && doInput.value < minDo) {
+          doInput.value = "";
+        }
+      }
+    });
+
+    document.getElementById("hero-od").addEventListener("change", function () {
+      const selectedOd = new Date(this.value);
+      if (!isNaN(selectedOd)) {
+        selectedOd.setMinutes(selectedOd.getMinutes() + 1); // minimalno 1 min kasnije
+        const minDo = selectedOd.toISOString().slice(0, 16);
+        const doInput = document.getElementById("hero-do");
+        doInput.min = minDo;
+
+        if (doInput.value && doInput.value < minDo) {
+          doInput.value = "";
+        }
+      }
+    });
+
+
+
+  </script>
+
+  <script>
+    // Zatvori mobilni meni kad se klikne na neki link unutar njega
+    document.querySelectorAll("#mobileMenu a").forEach(link => {
+      link.addEventListener("click", () => {
+        const menu = document.getElementById("mobileMenu");
+        const btn = document.getElementById("menuBtn");
+        menu.classList.remove("max-h-[500px]", "opacity-100");
+        menu.classList.add("max-h-0", "opacity-0");
+      });
+    });
+  </script>
+
+
+
+  <script>
+    const fab = document.getElementById("contact-fab");
+    const mainBtn = document.getElementById("main-btn");
+    const options = document.getElementById("contact-options");
+    const icon = mainBtn.querySelector("i");
+
+    mainBtn.addEventListener("click", () => {
+      const isOpen = options.classList.contains("opacity-100");
+
+      if (isOpen) {
+        options.classList.remove("opacity-100", "translate-y-0");
+        options.classList.add("opacity-0", "translate-y-4", "pointer-events-none");
+        icon.classList.remove("fa-times");
+        icon.classList.add("fa-comment");
+      } else {
+        options.classList.remove("opacity-0", "translate-y-4", "pointer-events-none");
+        options.classList.add("opacity-100", "translate-y-0");
+        icon.classList.remove("fa-comment");
+        icon.classList.add("fa-times");
+      }
+    });
+  </script>
+
+
+
+
+
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/booking.js"></script>
+  <script src="assets/js/cars.js"></script>
+  <script>
+    prikaziVozila(najnovijaVozila);
+  </script>
+
+
+
+
+  <script>
+    const btn = document.getElementById("menuBtn");
+    const menu = document.getElementById("mobileMenu");
+    let otvoreno = false;
+
+    btn.addEventListener("click", () => {
+      otvoreno = !otvoreno;
+      if (otvoreno) {
+        menu.classList.remove("max-h-0", "opacity-0");
+        menu.classList.add("max-h-[500px]", "opacity-100");
+      } else {
+        menu.classList.remove("max-h-[500px]", "opacity-100");
+        menu.classList.add("max-h-0", "opacity-0");
+      }
+    });
+  </script>
+
+
+  <script>
+    async function ucitajRezervacije() {
+      const res = await fetch("https://retoolapi.dev/qSVURz/urbandrive");
+      const data = await res.json();
+      return data; // niz rezervacija
+    }
+
+
+    function otvoriModal() {
+      const modal = document.getElementById("rezervacija-modal");
+      const content = document.getElementById("rezervacija-modal-content");
+
+      modal.classList.remove("hidden");
+      modal.classList.add("flex");
+
+      requestAnimationFrame(() => {
+        content.classList.remove("scale-95", "opacity-0");
+        content.classList.add("scale-100", "opacity-100");
+      });
+    }
+
+    function zatvoriModal() {
+      const modal = document.getElementById("rezervacija-modal");
+      const content = document.getElementById("rezervacija-modal-content");
+
+      content.classList.remove("scale-100", "opacity-100");
+      content.classList.add("scale-95", "opacity-0");
+
+      setTimeout(() => {
+        modal.classList.add("hidden");
+        modal.classList.remove("flex");
+      }, 300); // odgovara Tailwind `duration-300`
+    }
+
+
+    async function jeZauzeto(naziv, od, doVracanja) {
+      const rezervacije = await ucitajRezervacije();
+
+      const odDate = new Date(od);
+      const doDate = new Date(doVracanja);
+
+      return rezervacije.some(r => {
+        if (!r.vozilo || r.vozilo.trim().toLowerCase() !== naziv.trim().toLowerCase()) return false;
+
+        const [rOdStr, rDoStr] = r.datum_rezervacije.split(" - ");
+        const rOd = new Date(rOdStr);
+        const rDo = new Date(rDoStr);
+
+        return odDate < rDo && doDate > rOd;
+      });
+    }
+
+
+    document.getElementById('provjera-form').addEventListener('submit', async function (e) {
+
+      e.preventDefault();
+
+      const od = document.getElementById('modal-od').value;
+      const doDatum = document.getElementById('modal-do').value;
+      const lokacija = document.getElementById('modal-lokacija').value;
+      const vozilo = JSON.parse(localStorage.getItem("odabranoVozilo"));
+
+      const rezultatEl = document.getElementById('rezultat-provjere');
+      rezultatEl.classList.remove('text-green-600', 'text-red-600');
+      rezultatEl.classList.remove('hidden');
+
+      if (!vozilo) {
+        rezultatEl.innerText = "⚠️ Nije odabrano vozilo.";
+        rezultatEl.classList.add('text-red-600');
+        return;
+      }
+
+      const zauzeto = await jeZauzeto(vozilo.naziv, od, doDatum);
+
+
+      const provjeriBtn = document.querySelector('#provjera-form button[type="submit"]');
+
+      if (zauzeto) {
+        rezultatEl.innerHTML = `
+    <div class="bg-red-100 border border-red-400 text-red-700 px-3 py-2 rounded text-xs">
+      ❌ Nažalost, vozilo nije dostupno za odabrani period na lokaciji: <strong>${lokacija}</strong>.
+    </div>
+  `;
+        provjeriBtn.textContent = "Provjeri";
+        provjeriBtn.disabled = true;
+        provjeriBtn.onclick = null;
+      } else {
+        rezultatEl.innerHTML = `
+    <div class="bg-green-100 border border-green-400 text-green-700 px-3 py-2 rounded text-xs">
+      ✅ Vozilo je dostupno i spremno za rezervaciju na lokaciji: <strong>${lokacija}</strong>.
+    </div>
+  `;
+        provjeriBtn.textContent = "Rezerviši";
+        provjeriBtn.disabled = false;
+        provjeriBtn.onclick = () => {
+          localStorage.setItem("datumOd", od);
+          localStorage.setItem("datumDo", doDatum);
+          localStorage.setItem("lokacija", lokacija);
+          window.location.href = "reservation.html";
+        };
+      }
+
+      ["modal-od", "modal-do", "modal-lokacija"].forEach(id => {
+        document.getElementById(id).addEventListener("input", () => {
+          const rezultatEl = document.getElementById('rezultat-provjere');
+          rezultatEl.innerHTML = ""; // Očisti rezultat
+          rezultatEl.classList.remove("text-green-600", "text-red-600");
+
+          const provjeriBtn = document.querySelector('#provjera-form button[type="submit"]');
+          provjeriBtn.textContent = "Provjeri";
+          provjeriBtn.disabled = false;
+          provjeriBtn.onclick = null;
+        });
+      });
+
+
+
+
+    });
+
+
+
+  </script>
+
+  <script>
+    document.getElementById("search-submit-btn").addEventListener("click", function (e) {
+      e.preventDefault();
+
+      const lokacijaInput = document.getElementById("hero-lokacija");
+      const lokacija = lokacijaInput.value;
+      const datumOdInput = document.getElementById("hero-od");
+      const datumDoInput = document.getElementById("hero-do");
+      const datumOd = datumOdInput.value;
+      const datumDo = datumDoInput.value;
+      const brojPutnika = document.getElementById("passenger-count").value;
+
+      const errorDiv = document.getElementById("lokacija-error");
+
+      let valid = true;
+
+      // Validacija lokacije
+      if (!lokacija) {
+        errorDiv.classList.remove("hidden");
+        lokacijaInput.classList.add("border-red-500");
+        valid = false;
+      } else {
+        errorDiv.classList.add("hidden");
+        lokacijaInput.classList.remove("border-red-500");
+      }
+
+      // Validacija datuma
+      if (!datumOd) {
+        datumOdInput.classList.add("border-red-500");
+        valid = false;
+      } else {
+        datumOdInput.classList.remove("border-red-500");
+      }
+
+      if (!datumDo) {
+        datumDoInput.classList.add("border-red-500");
+        valid = false;
+      } else {
+        datumDoInput.classList.remove("border-red-500");
+      }
+
+      if (!valid) return;
+
+      localStorage.setItem("lokacija", lokacija);
+      localStorage.setItem("datumOd", datumOd);
+      localStorage.setItem("datumDo", datumDo);
+      localStorage.setItem("brojPutnika", brojPutnika);
+
+      window.location.href = "results.html";
+    });
+  </script>
+
+
+  <script>
+    function switchLanguage(lang) {
+      if (lang === 'en') {
+        window.location.href = 'index-en.html';
+      } else {
+        window.location.href = 'index.html';
+      }
+    }
+  </script>
+
+
+
+</body>
+
+</html>

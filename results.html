@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="bs">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rezultati pretrage - RentaCar</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
+</head>
+
+<body class="bg-gray-50">
+
+  <!-- Header -->
+  <header class="bg-white shadow fixed top-0 w-full z-50">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+      <a href="index.html"
+        class="text-2xl font-bold bg-gradient-to-r from-blue-900 to-sky-500 text-transparent bg-clip-text">
+        Urban Drive
+      </a>
+
+
+      <a href="index.html"
+        class="inline-flex items-center text-sm text-blue-700 hover:text-blue-900 font-medium transition">
+        <i class="fa-solid fa-arrow-left mr-2"></i> Povratak na početnu
+      </a>
+
+    </div>
+  </header>
+
+
+  <div class="max-w-7xl mx-auto px-4 py-10 pt-24">
+
+    <h1 class="text-2xl font-bold mb-6 text-center">Rezultati pretrage</h1>
+    <!-- Forma za izmjenu pretrage -->
+    <form id="search-update-form" class="bg-white shadow rounded px-6 py-4 mb-6 flex flex-wrap gap-4 items-end">
+      <!-- Lokacija preuzimanja -->
+      <div class="w-full md:w-auto">
+        <label class="block text-sm font-semibold mb-1">Lokacija preuzimanja</label>
+        <div class="relative">
+          <select id="form-lokacija"
+            class="w-full border rounded px-3 py-2 h-[42px] appearance-none text-sm leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+            <option>Sarajevo - po dogovoru</option>
+            <option>Mostar - po dogovoru</option>
+            <option>Banja Luka - po dogovoru</option>
+            <option>Tuzla - po dogovoru</option>
+          </select>
+          <i
+            class="fa-solid fa-chevron-down absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none"></i>
+        </div>
+      </div>
+
+      <!-- Datum preuzimanja -->
+<div>
+  <label class="block text-sm font-semibold mb-1">Datum preuzimanja</label>
+  <input id="form-datum-od" type="datetime-local"
+    class="cursor-pointer border rounded px-3 py-2 h-[42px] text-sm leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+    onclick="this.showPicker && this.showPicker()" />
+</div>
+
+<!-- Datum vraćanja -->
+<div>
+  <label class="block text-sm font-semibold mb-1">Datum vraćanja</label>
+  <input id="form-datum-do" type="datetime-local"
+    class="cursor-pointer border rounded px-3 py-2 h-[42px] text-sm leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+    onclick="this.showPicker && this.showPicker()" />
+</div>
+
+
+      <!-- Broj putnika -->
+      <div>
+        <label class="block text-sm font-semibold mb-1">Broj putnika</label>
+        <input id="form-putnici" type="number" min="1"
+          class="border rounded px-3 py-2 h-[42px] text-sm leading-tight w-20 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" />
+      </div>
+
+      <!-- Dugme -->
+      <button type="submit"
+        class="bg-blue-600 text-white px-4 py-2 h-[42px] rounded hover:bg-blue-700 text-sm leading-tight">
+        Pretraži ponovo
+      </button>
+    </form>
+
+
+    <div class="flex flex-col items-center lg:flex-row lg:items-start gap-6 lg:justify-start">
+
+
+
+      <!-- Filteri -->
+      <aside class="w-full max-w-xs bg-white p-6 rounded-2xl shadow-xl text-sm space-y-8">
+
+        <h2 class="text-xl font-bold text-gray-800 border-b pb-2">Filteri</h2>
+
+        <div class="space-y-3">
+          <h3 class="text-sm font-semibold text-gray-700">Tip vozila:</h3>
+          <div class="space-y-2 pl-1">
+            <label class="flex items-center gap-2"><input type="radio" name="tip" value="Svi" checked
+                class="accent-blue-600"> Svi</label>
+            <label class="flex items-center gap-2"><input type="radio" name="tip" value="Ekonomska"
+                class="accent-blue-600"> Ekonomska</label>
+            <label class="flex items-center gap-2"><input type="radio" name="tip" value="SUV" class="accent-blue-600">
+              SUV</label>
+            <label class="flex items-center gap-2"><input type="radio" name="tip" value="Luksuzna"
+                class="accent-blue-600"> Luksuzna</label>
+            <label class="flex items-center gap-2"><input type="radio" name="tip" value="Kombi" class="accent-blue-600">
+              Kombi</label>
+          </div>
+        </div>
+
+        <div class="space-y-3">
+          <h3 class="text-sm font-semibold text-gray-700">Mjenjač:</h3>
+          <div class="space-y-2 pl-1">
+            <label class="flex items-center gap-2"><input type="radio" name="mjenjac" value="Svi" checked
+                class="accent-blue-600"> Svi</label>
+            <label class="flex items-center gap-2"><input type="radio" name="mjenjac" value="Automatik"
+                class="accent-blue-600"> Automatik</label>
+            <label class="flex items-center gap-2"><input type="radio" name="mjenjac" value="Manuelni"
+                class="accent-blue-600"> Manuelni</label>
+          </div>
+        </div>
+
+        <div class="space-y-3">
+          <h3 class="text-sm font-semibold text-gray-700">Broj sjedišta:</h3>
+          <select id="filter-sjedista"
+            class="w-full border border-gray-300 rounded-lg px-3 py-2 text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <option value="Svi">Svi</option>
+            <option value="5">5</option>
+            <option value="7">7</option>
+            <option value="7+">7+</option>
+          </select>
+        </div>
+
+        <div class="pt-4 border-t">
+          <button onclick="resetujFiltere()"
+            class="w-full bg-gray-100 hover:bg-gray-200 text-gray-800 font-medium py-2 rounded-lg transition">
+            🔄 Resetuj filtere
+          </button>
+        </div>
+
+      </aside>
+
+
+
+
+      <!-- Vozila -->
+      <main class="flex-1 mx-auto">
+
+        <div id="rezultati-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center">
+
+          <!-- Vozila se dinamički prikazuju ovdje -->
+        </div>
+      </main>
+    </div>
+
+
+    <div id="pagination" class="flex justify-center items-center gap-2 mt-8">
+      <!-- Dugmad za paginaciju idu ovdje -->
+    </div>
+  </div>
+
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-gray-300 pt-10 pb-6">
+
+    <div
+      class="max-w-4xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-48 items-start text-center md:text-left">
+
+      <!-- Lijeva kolona: Brend i društvene mreže -->
+      <div class="space-y-4">
+        <h3 class="text-xl font-semibold text-white">Urban Drive</h3>
+        <p class="text-sm">Najbolji rent-a-car usluga u Bosni i Hercegovini. Nudimo širok izbor vozila za sve vaše
+          potrebe.</p>
+        <div class="flex justify-center md:justify-start space-x-4 text-xl">
+          <a href="#" class="hover:text-white"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" class="hover:text-white"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" class="hover:text-white"><i class="fa-brands fa-tiktok"></i></a>
+        </div>
+        <div class="flex justify-center md:justify-start">
+          <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
+            class="mt-2 px-4 py-2 border text-sm rounded border-gray-600 hover:bg-gray-800 transition">
+            <i class="fa-solid fa-chevron-up mr-2"></i>Back to Top
+          </button>
+        </div>
+      </div>
+
+      <!-- Desna kolona: Kontakt informacije -->
+      <div class="space-y-2">
+        <h4 class="text-sm font-semibold text-white mb-2">Kontaktirajte nas</h4>
+        <ul class="space-y-2 text-sm">
+          <li><i class="fa-solid fa-location-dot text-blue-500 mr-2"></i> Kurta Schorka 36, Sarajevo</li>
+          <li><i class="fa-solid fa-phone text-blue-500 mr-2"></i> +387 61 240 699</li>
+          <li><i class="fa-solid fa-envelope text-blue-500 mr-2"></i> rentacarurbandrive@gmail.com</li>
+          <li><i class="fa-solid fa-clock text-blue-500 mr-2"></i> Pon - Pet: 08:00 - 20:00, Sub: 09:00 - 17:00</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="text-center text-sm text-gray-500 mt-10 border-t border-gray-700 pt-4">
+      &copy; 2025 Urban Drive. Sva prava zadržana.
+    </div>
+  </footer>
+
+
+
+  <!-- Kontakt Krug -->
+  <div id="contact-fab" class="fixed bottom-6 right-6 flex flex-col items-center space-y-3 z-50">
+    <!-- Kontakt opcije -->
+    <div id="contact-options"
+      class="flex flex-col items-center space-y-2 opacity-0 translate-y-4 pointer-events-none transition-all duration-300">
+      <a href="https://wa.me/38761240699" target="_blank"
+        class="w-12 h-12 rounded-full bg-[#0072c6] text-white flex items-center justify-center shadow-lg hover:bg-[#00a3e0] transition">
+        <i class="fa-brands fa-whatsapp text-xl"></i>
+      </a>
+
+      <a href="viber://chat?number=+38761240699"
+        class="w-12 h-12 rounded-full bg-[#0072c6] text-white flex items-center justify-center shadow-lg hover:bg-[#00a3e0] transition">
+        <i class="fa-brands fa-viber text-xl"></i>
+      </a>
+
+    </div>
+
+    <!-- Glavno dugme -->
+    <button id="main-btn"
+      class="w-14 h-14 rounded-full bg-[#004f8f] text-white text-2xl shadow-lg flex items-center justify-center hover:bg-[#00a3e0] transition">
+      <i class="fa-solid fa-comment"></i>
+    </button>
+  </div>
+
+
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const now = new Date();
+    now.setMinutes(now.getMinutes() - now.getTimezoneOffset()); // ISO bez vremenske zone razlike
+    const isoNow = now.toISOString().slice(0, 16);
+
+    const pickup = document.getElementById("form-datum-od");
+    const ret = document.getElementById("form-datum-do");
+
+    if (pickup) pickup.min = isoNow;
+    if (ret) ret.min = isoNow;
+
+    // Kad se promijeni datum preuzimanja, ažuriraj minimalni datum vraćanja
+    if (pickup && ret) {
+      pickup.addEventListener("change", () => {
+        if (pickup.value) {
+          ret.min = pickup.value;
+        }
+      });
+    }
+  });
+</script>
+
+
+  <script>
+    function switchLanguage(lang) {
+      if (lang === 'en') {
+        window.location.href = 'results-en.html';
+      } else {
+        window.location.href = 'results.html';
+      }
+    }
+  </script>
+
+
+
+
+  <script>
+    const fab = document.getElementById("contact-fab");
+    const mainBtn = document.getElementById("main-btn");
+    const options = document.getElementById("contact-options");
+    const icon = mainBtn.querySelector("i");
+
+    mainBtn.addEventListener("click", () => {
+      const isOpen = options.classList.contains("opacity-100");
+
+      if (isOpen) {
+        options.classList.remove("opacity-100", "translate-y-0");
+        options.classList.add("opacity-0", "translate-y-4", "pointer-events-none");
+        icon.classList.remove("fa-times");
+        icon.classList.add("fa-comment");
+      } else {
+        options.classList.remove("opacity-0", "translate-y-4", "pointer-events-none");
+        options.classList.add("opacity-100", "translate-y-0");
+        icon.classList.remove("fa-comment");
+        icon.classList.add("fa-times");
+      }
+    });
+  </script>
+
+
+  <script src="assets/js/cars.js"></script>
+  <script src="assets/js/results.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="bs">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rezervacija vozila</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/reservation.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+      <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
+</head>
+
+<body class="bg-gray-50 text-gray-900">
+
+    <header class="bg-white shadow fixed top-0 w-full z-50">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="index.html"
+                class="text-2xl font-bold bg-gradient-to-r from-blue-900 to-sky-500 text-transparent bg-clip-text">
+                Urban Drive
+            </a>
+
+
+            <a href="index.html"
+                class="inline-flex items-center text-sm text-blue-700 hover:text-blue-900 font-medium transition">
+                <i class="fa-solid fa-arrow-left mr-2"></i> Povratak na početnu
+            </a>
+        </div>
+    </header>
+
+
+
+    <div class="pt-24"></div>
+
+
+    <section class="max-w-4xl mx-auto px-4 mb-10 text-center">
+        <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Rezervacija vozila</h1>
+        <p class="text-gray-600 text-base md:text-lg">Molimo popunite tražene informacije da bismo mogli obraditi vašu
+            rezervaciju.</p>
+    </section>
+
+    <section class="max-w-7xl mx-auto px-4 mb-10">
+        <div class="flex flex-col lg:flex-row gap-6">
+
+            <div class="w-full lg:max-w-sm space-y-6">
+                <div id="vozilo-detalji"></div>
+                <div id="rezervacija-info"></div>
+                <div id="support-info"></div>
+
+            </div>
+
+            <div class="flex-1 space-y-6">
+
+                <div class="bg-white p-6 rounded-xl shadow">
+                    <h2 class="text-xl font-semibold mb-4">Lični podaci</h2>
+                    <form id="reservation-form" class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+  <label class="block mb-1 font-medium">Ime <span class="text-red-500">*</span></label>
+  <input type="text" name="ime" id="ime" class="w-full border rounded px-3 py-2" required />
+  <p id="ime-error" class="text-red-500 text-sm hidden">Ime mora početi velikim slovom i imati min 2 slova.</p>
+</div>
+
+<div>
+  <label class="block mb-1 font-medium">Prezime <span class="text-red-500">*</span></label>
+  <input type="text" name="prezime" id="prezime" class="w-full border rounded px-3 py-2" required />
+  <p id="prezime-error" class="text-red-500 text-sm hidden">Prezime mora početi velikim slovom.</p>
+</div>
+
+<div>
+  <label class="block mb-1 font-medium">Email adresa <span class="text-red-500">*</span></label>
+  <input type="email" name="email" id="email" class="w-full border rounded px-3 py-2" required />
+  <p id="email-error" class="text-red-500 text-sm hidden">Unesite ispravan email (npr. primjer@mail.com).</p>
+</div>
+
+<div>
+  <label class="block mb-1 font-medium">Broj telefona <span class="text-red-500">*</span></label>
+  <input type="tel" name="telefon" id="telefon" class="w-full border rounded px-3 py-2" required />
+  <p id="telefon-error" class="text-red-500 text-sm hidden">Unesite ispravan broj (npr. +38761234567).</p>
+</div>
+
+<div>
+  <label class="block mb-1 font-medium">Broj vozačke dozvole <span class="text-red-500">*</span></label>
+  <input type="text" name="vozacka" id="vozacka" class="w-full border rounded px-3 py-2" required />
+  <p id="vozacka-error" class="text-red-500 text-sm hidden">Broj vozačke mora imati barem 5 karaktera.</p>
+</div>
+
+                            <div>
+                                <label class="block mb-1 font-medium">Država izdavanja <span
+                                        class="text-red-500">*</span></label>
+                                <select name="drzava" id="drzava" class="w-full border rounded px-3 py-2" required>
+                                    <option value="" disabled selected>Odaberite državu</option>
+                                    <option value="AF">Afganistan</option>
+                                    <option value="AL">Albanija</option>
+                                    <option value="DZ">Alžir</option>
+                                    <option value="AD">Andora</option>
+                                    <option value="AO">Angola</option>
+                                    <option value="AR">Argentina</option>
+                                    <option value="AM">Armenija</option>
+                                    <option value="AU">Australija</option>
+                                    <option value="AT">Austrija</option>
+                                    <option value="AZ">Azerbejdžan</option>
+                                    <option value="BS">Bahami</option>
+                                    <option value="BH">Bahrein</option>
+                                    <option value="BD">Bangladeš</option>
+                                    <option value="BB">Barbados</option>
+                                    <option value="BE">Belgija</option>
+                                    <option value="BO">Bolivija</option>
+                                    <option value="BA">Bosna i Hercegovina</option>
+                                    <option value="BW">Bocvana</option>
+                                    <option value="BR">Brazil</option>
+                                    <option value="BG">Bugarska</option>
+                                    <option value="BF">Burkina Faso</option>
+                                    <option value="BI">Burundi</option>
+                                    <option value="KH">Kambodža</option>
+                                    <option value="CM">Kamerun</option>
+                                    <option value="CA">Kanada</option>
+                                    <option value="CF">Centralnoafrička Republika</option>
+                                    <option value="CL">Čile</option>
+                                    <option value="CN">Kina</option>
+                                    <option value="CO">Kolumbija</option>
+                                    <option value="CR">Kostarika</option>
+                                    <option value="HR">Hrvatska</option>
+                                    <option value="CU">Kuba</option>
+                                    <option value="CY">Kipar</option>
+                                    <option value="CZ">Češka</option>
+                                    <option value="DK">Danska</option>
+                                    <option value="DO">Dominikanska Republika</option>
+                                    <option value="EC">Ekvador</option>
+                                    <option value="EG">Egipat</option>
+                                    <option value="SV">El Salvador</option>
+                                    <option value="GQ">Ekvatorska Gvineja</option>
+                                    <option value="ER">Eritreja</option>
+                                    <option value="EE">Estonija</option>
+                                    <option value="ET">Etiopija</option>
+                                    <option value="FI">Finska</option>
+                                    <option value="FR">Francuska</option>
+                                    <option value="GA">Gabon</option>
+                                    <option value="GM">Gambija</option>
+                                    <option value="GE">Gruzija</option>
+                                    <option value="DE">Njemačka</option>
+                                    <option value="GH">Gana</option>
+                                    <option value="GR">Grčka</option>
+                                    <option value="GD">Grenada</option>
+                                    <option value="GT">Gvatemala</option>
+                                    <option value="GN">Gvineja</option>
+                                    <option value="HT">Haiti</option>
+                                    <option value="HN">Honduras</option>
+                                    <option value="HU">Mađarska</option>
+                                    <option value="IS">Island</option>
+                                    <option value="IN">Indija</option>
+                                    <option value="ID">Indonezija</option>
+                                    <option value="IR">Iran</option>
+                                    <option value="IQ">Irak</option>
+                                    <option value="IE">Irska</option>
+                                    <option value="IL">Izrael</option>
+                                    <option value="IT">Italija</option>
+                                    <option value="CI">Obala Slonovače</option>
+                                    <option value="JM">Jamajka</option>
+                                    <option value="JP">Japan</option>
+                                    <option value="JO">Jordan</option>
+                                    <option value="KZ">Kazahstan</option>
+                                    <option value="KE">Kenija</option>
+                                    <option value="KR">Južna Koreja</option>
+                                    <option value="KW">Kuvajt</option>
+                                    <option value="KG">Kirgistan</option>
+                                    <option value="LA">Laos</option>
+                                    <option value="LV">Latvija</option>
+                                    <option value="LB">Liban</option>
+                                    <option value="LS">Lesoto</option>
+                                    <option value="LR">Liberija</option>
+                                    <option value="LY">Libija</option>
+                                    <option value="LI">Lihtenštajn</option>
+                                    <option value="LT">Litvanija</option>
+                                    <option value="LU">Luksemburg</option>
+                                    <option value="MG">Madagaskar</option>
+                                    <option value="MW">Malavi</option>
+                                    <option value="MY">Malezija</option>
+                                    <option value="MV">Maldivi</option>
+                                    <option value="ML">Mali</option>
+                                    <option value="MT">Malta</option>
+                                    <option value="MX">Meksiko</option>
+                                    <option value="MD">Moldavija</option>
+                                    <option value="MC">Monako</option>
+                                    <option value="MN">Mongolija</option>
+                                    <option value="ME">Crna Gora</option>
+                                    <option value="MA">Maroko</option>
+                                    <option value="MZ">Mozambik</option>
+                                    <option value="MM">Mjanmar</option>
+                                    <option value="NA">Namibija</option>
+                                    <option value="NP">Nepal</option>
+                                    <option value="NL">Nizozemska</option>
+                                    <option value="NZ">Novi Zeland</option>
+                                    <option value="NI">Nikaragva</option>
+                                    <option value="NE">Niger</option>
+                                    <option value="NG">Nigerija</option>
+                                    <option value="MK">Sjeverna Makedonija</option>
+                                    <option value="NO">Norveška</option>
+                                    <option value="OM">Oman</option>
+                                    <option value="PK">Pakistan</option>
+                                    <option value="PW">Palau</option>
+                                    <option value="PA">Panama</option>
+                                    <option value="PY">Paragvaj</option>
+                                    <option value="PE">Peru</option>
+                                    <option value="PH">Filipini</option>
+                                    <option value="PL">Poljska</option>
+                                    <option value="PT">Portugal</option>
+                                    <option value="QA">Katar</option>
+                                    <option value="RO">Rumunija</option>
+                                    <option value="RU">Rusija</option>
+                                    <option value="RW">Ruanda</option>
+                                    <option value="WS">Samoa</option>
+                                    <option value="SM">San Marino</option>
+                                    <option value="SA">Saudijska Arabija</option>
+                                    <option value="SN">Senegal</option>
+                                    <option value="RS">Srbija</option>
+                                    <option value="SL">Sijera Leone</option>
+                                    <option value="SG">Singapur</option>
+                                    <option value="SK">Slovačka</option>
+                                    <option value="SI">Slovenija</option>
+                                    <option value="SB">Solomonska Ostrva</option>
+                                    <option value="SO">Somalija</option>
+                                    <option value="ZA">Južnoafrička Republika</option>
+                                    <option value="ES">Španija</option>
+                                    <option value="SD">Sudan</option>
+                                    <option value="SR">Surinam</option>
+                                    <option value="SE">Švedska</option>
+                                    <option value="CH">Švicarska</option>
+                                    <option value="SY">Sirija</option>
+                                    <option value="TW">Tajvan</option>
+                                    <option value="TJ">Tadžikistan</option>
+                                    <option value="TH">Tajland</option>
+                                    <option value="TG">Togo</option>
+                                    <option value="TO">Tonga</option>
+                                    <option value="TT">Trinidad i Tobago</option>
+                                    <option value="TN">Tunis</option>
+                                    <option value="TR">Turska</option>
+                                    <option value="TM">Turkmenistan</option>
+                                    <option value="TV">Tuvalu</option>
+                                    <option value="UG">Uganda</option>
+                                    <option value="UA">Ukrajina</option>
+                                    <option value="AE">Ujedinjeni Arapski Emirati</option>
+                                    <option value="GB">Ujedinjeno Kraljevstvo</option>
+                                    <option value="US">Sjedinjene Američke Države</option>
+                                    <option value="UY">Urugvaj</option>
+                                    <option value="UZ">Uzbekistan</option>
+                                    <option value="VU">Vanuatu</option>
+                                    <option value="VA">Vatikan</option>
+                                    <option value="VE">Venecuela</option>
+                                    <option value="VN">Vijetnam</option>
+                                    <option value="YE">Jemen</option>
+                                    <option value="ZM">Zambija</option>
+                                    <option value="ZW">Zimbabve</option>
+                                </select>
+                                <p id="drzava-error" class="text-red-500 text-sm hidden">Molimo odaberite državu.</p>
+
+
+                            </div>
+                        </div>
+
+                        <!-- Dodatne opcije -->
+                        <!-- Dodatne opcije -->
+                        <div class="bg-white p-6 rounded-xl shadow">
+                            <h2 class="text-lg font-bold text-gray-900 mb-4">Dodatne opcije</h2>
+
+                            <!-- Dječije sjedište -->
+                            <div class="flex items-center justify-between p-4 border rounded-lg mb-4">
+                                <div>
+                                    <p class="font-semibold">Dječije sjedište</p>
+                                    <p class="text-sm text-gray-600">Sigurnosno sjedište za djecu do 12 godina</p>
+                                </div>
+                                <div class="text-right">
+                                    <p class="font-bold text-gray-800" id="djecije-cijena">--</p>
+
+
+                                    <input type="checkbox" name="djecije_sjediste"
+                                        class="w-5 h-5 mt-2 accent-blue-600" />
+
+                                </div>
+                            </div>
+
+                            <!-- Osiguranje -->
+                            <h3 class="font-semibold text-gray-800 mt-6 mb-2">Osiguranje</h3>
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <label
+                                    class="border rounded-lg p-4 cursor-pointer hover:border-blue-500 transition block">
+                                    <div class="flex items-center mb-2 gap-2">
+                                        <input type="radio" name="osiguranje" value="osnovno" checked
+                                            class="accent-blue-600" />
+                                        <p class="font-semibold">Osnovno osiguranje</p>
+                                    </div>
+                                    <p class="text-sm text-gray-600">Pokriva osnovne štete u slučaju nezgode</p>
+                                    <p class="text-sm text-blue-600 font-semibold mt-1">Uključeno u cijenu</p>
+                                </label>
+
+                                <label
+                                    class="border rounded-lg p-4 cursor-pointer hover:border-blue-500 transition block">
+                                    <div class="flex items-center mb-2 gap-2">
+                                        <input type="radio" name="osiguranje" value="puno" class="accent-blue-600" />
+                                        <p class="font-semibold">Puno osiguranje</p>
+                                    </div>
+                                    <p class="text-sm text-gray-600">Pokriva sve vrste šteta bez učešća u šteti</p>
+                                    <p class="text-sm text-gray-800 font-bold mt-1" id="puno-osiguranje-cijena">--</p>
+
+
+                                </label>
+                            </div>
+                        </div>
+                        <div id="checkout-box"></div>
+
+                    </form>
+
+                </div>
+
+
+
+    </section>
+    </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-300 pt-10 pb-6">
+        <div
+            class="max-w-4xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-48 items-start text-center md:text-left">
+
+            <!-- Lijeva kolona: Brend i društvene mreže -->
+            <div class="space-y-4">
+                <h3 class="text-xl font-semibold text-white">Urban Drive</h3>
+                <p class="text-sm">Najbolji rent-a-car usluga u Bosni i Hercegovini. Nudimo širok izbor vozila za sve
+                    vaše potrebe.</p>
+                <div class="flex justify-center md:justify-start space-x-4 text-xl">
+                    <a href="#" class="hover:text-white"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="hover:text-white"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="hover:text-white"><i class="fa-brands fa-tiktok"></i></a>
+                </div>
+                <div class="flex justify-center md:justify-start">
+                    <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
+                        class="mt-2 px-4 py-2 border text-sm rounded border-gray-600 hover:bg-gray-800 transition">
+                        <i class="fa-solid fa-chevron-up mr-2"></i>Back to Top
+                    </button>
+                </div>
+            </div>
+
+            <!-- Desna kolona: Kontakt informacije -->
+            <div class="space-y-2">
+                <h4 class="text-sm font-semibold text-white mb-2">Contact us</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><i class="fa-solid fa-location-dot text-blue-500 mr-2"></i> Kurta Schorka 36, Sarajevo</li>
+                    <li><i class="fa-solid fa-phone text-blue-500 mr-2"></i> +387 61 240 699</li>
+                    <li><i class="fa-solid fa-envelope text-blue-500 mr-2"></i> rentacarurbandrive@gmail.com</li>
+                    <li><i class="fa-solid fa-clock text-blue-500 mr-2"></i> Pon - Pet: 08:00 - 20:00, Sub: 09:00 -
+                        17:00</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="text-center text-sm text-gray-500 mt-10 border-t border-gray-700 pt-4">
+            &copy; 2025 Urban Drive. Sva prava zadržana.
+        </div>
+    </footer>
+
+
+    <!-- Kontakt Krug -->
+    <div id="contact-fab" class="fixed bottom-6 right-6 flex flex-col items-center space-y-3 z-50">
+        <!-- Kontakt opcije -->
+        <div id="contact-options"
+            class="flex flex-col items-center space-y-2 opacity-0 translate-y-4 pointer-events-none transition-all duration-300">
+            <a href="https://wa.me/38761240699" target="_blank"
+                class="w-12 h-12 rounded-full bg-[#0072c6] text-white flex items-center justify-center shadow-lg hover:bg-[#00a3e0] transition">
+                <i class="fa-brands fa-whatsapp text-xl"></i>
+            </a>
+
+            <a href="viber://chat?number=+38761240699"
+                class="w-12 h-12 rounded-full bg-[#0072c6] text-white flex items-center justify-center shadow-lg hover:bg-[#00a3e0] transition">
+                <i class="fa-brands fa-viber text-xl"></i>
+            </a>
+
+        </div>
+
+        <!-- Glavno dugme -->
+        <button id="main-btn"
+            class="w-14 h-14 rounded-full bg-[#004f8f] text-white text-2xl shadow-lg flex items-center justify-center hover:bg-[#00a3e0] transition">
+            <i class="fa-solid fa-comment"></i>
+        </button>
+    </div>
+
+    <!-- Modal za prikaz slike -->
+    <div id="image-modal" class="fixed inset-0 bg-black/70 flex items-center justify-center z-[999] hidden">
+        <div id="modal-overlay" class="absolute inset-0 cursor-pointer"></div>
+
+        <div class="relative max-w-3xl w-full px-4 z-10">
+            <img id="modal-image" src="" class="w-full h-auto rounded-xl shadow-lg pointer-events-none" alt="Vozilo" />
+
+            <button onclick="promijeniSlikuModal(-1)"
+                class="absolute left-8 top-1/2 -translate-y-1/2 text-white text-3xl hover:scale-110 transition">
+                <i class="fa-solid fa-chevron-left"></i>
+            </button>
+            <button onclick="promijeniSlikuModal(1)"
+                class="absolute right-8 top-1/2 -translate-y-1/2 text-white text-3xl hover:scale-110 transition">
+                <i class="fa-solid fa-chevron-right"></i>
+            </button>
+        </div>
+    </div>
+
+
+    <!-- MODAL ZA POTVRDU -->
+<div id="rezervacija-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 hidden">
+  <div class="bg-white rounded-xl p-6 shadow-lg text-center max-w-sm w-full">
+    <h2 class="text-xl font-bold mb-2 text-green-700">Hvala Vam!</h2>
+    <p class="text-gray-700 mb-4">Uspješno ste rezervisali vozilo.</p>
+    <button onclick="zatvoriModalIRedirekcija()"
+            class="bg-blue-700 text-white px-4 py-2 rounded hover:bg-blue-800 transition">
+      U redu
+    </button>
+  </div>
+</div>
+
+
+<script>
+
+
+function prikaziModalRezervacije() {
+  const modal = document.getElementById("rezervacija-modal");
+  modal.classList.remove("hidden");
+
+  // Automatska redirekcija nakon 3 sekunde ako korisnik ne klikne
+  setTimeout(() => {
+    window.location.href = "index.html";
+  }, 20000);
+}
+
+function zatvoriModalIRedirekcija() {
+  window.location.href = "index.html";
+}
+
+    </script>
+
+
+
+    <script>
+        const fab = document.getElementById("contact-fab");
+        const mainBtn = document.getElementById("main-btn");
+        const options = document.getElementById("contact-options");
+        const icon = mainBtn.querySelector("i");
+
+        mainBtn.addEventListener("click", () => {
+            const isOpen = options.classList.contains("opacity-100");
+
+            if (isOpen) {
+                options.classList.remove("opacity-100", "translate-y-0");
+                options.classList.add("opacity-0", "translate-y-4", "pointer-events-none");
+                icon.classList.remove("fa-times");
+                icon.classList.add("fa-comment");
+            } else {
+                options.classList.remove("opacity-0", "translate-y-4", "pointer-events-none");
+                options.classList.add("opacity-100", "translate-y-0");
+                icon.classList.remove("fa-comment");
+                icon.classList.add("fa-times");
+            }
+        });
+    </script>
+
+
+
+    <script src="assets/js/main.js"></script>
+
+    <script src="assets/js/results.js"></script>
+    <script src="assets/js/reservation.js"></script>
+
+    <script>
+        const btn = document.getElementById("menuBtn");
+        const menu = document.getElementById("mobileMenu");
+
+        let otvoreno = false;
+
+        btn.addEventListener("click", () => {
+            otvoreno = !otvoreno;
+
+            if (otvoreno) {
+                menu.classList.remove("max-h-0", "opacity-0");
+                menu.classList.add("max-h-[500px]", "opacity-100");
+            } else {
+                menu.classList.remove("max-h-[500px]", "opacity-100");
+                menu.classList.add("max-h-0", "opacity-0");
+            }
+        });
+    </script>
+
+
+    <script>
+        function switchLanguage(lang) {
+            if (lang === 'en') {
+                window.location.href = 'reservation-en.html';
+            } else {
+                window.location.href = 'reservation.html';
+            }
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+  emailjs.init("IMvIyvVHe7lVkbGYO");
+
+  function posaljiRezervaciju(podaci, forma) {
+    // 1. Pošalji email putem EmailJS
+    emailjs.send("service_cpbz1kt", "template_828nc1l", podaci)
+      .then(() => {
+        console.log("Email poslan");
+      })
+      .catch((error) => {
+        console.error("Greška pri slanju emaila:", error);
+      });
+
+    // 2. Pošalji podatke na Retool API
+    fetch("https://retoolapi.dev/qSVURz/urbandrive", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        ime: podaci.ime,
+        prezime: podaci.prezime,
+        datum_rezervacije: `${podaci.datum_od} - ${podaci.datum_do}`,
+        vozilo: podaci.vozilo,
+        cijena: parseFloat(podaci.ukupna_cijena.replace(/[^\d.]/g, "")), // čisti broj
+        valuta: podaci.valuta
+      })
+    })
+      .then((res) => {
+        if (!res.ok) throw new Error("Greška prilikom slanja.");
+
+        prikaziModalRezervacije(); 
+
+        forma.reset();
+      })
+      .catch((err) => {
+        console.error(err);
+        alert("Greška prilikom slanja rezervacije.");
+      });
+  }
+
+  window.posaljiRezervaciju = posaljiRezervaciju;
+</script>
+
+    <script>
+        const langAttr = document.documentElement.lang;
+        const jezik = langAttr === "en" ? "en" : "bs";
+
+        const tekst = {
+            bs: {
+                valuta: "KM",
+                kurs: 2.0
+            },
+            en: {
+                valuta: "€",
+                kurs: 1.0
+            }
+        };
+
+        const t = tekst[jezik];
+
+        // Postavi cijene dodatnih opcija
+        document.getElementById("djecije-cijena").textContent = `${(10 * t.kurs).toFixed(0)} ${t.valuta} / dan`;
+        document.getElementById("puno-osiguranje-cijena").textContent = `${(15 * t.kurs).toFixed(0)} ${t.valuta} / dan`;
+    </script>
+
+
+
+
+
+
+
+</body>
+
+
+
+
+</html>

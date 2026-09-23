@@ -1,0 +1,124 @@
+
+
+body , html{
+  scroll-behavior: smooth;
+}
+
+
+
+
+#header-placeholder,
+#footer-placeholder {
+  min-height: 60px;
+}
+
+
+.button-primary {
+  background-color: #004f8f;
+  color: white;
+  padding: 0.5rem 1.5rem;
+  font-weight: 500;
+  border-radius: 0.5rem;
+  transition: background-color 0.3s ease;
+}
+
+.button-primary:hover {
+  background-color: #00a3e0;
+}
+
+
+.vehicle-card {
+  background-color: white;
+  border-radius: 1rem;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+}
+
+.vehicle-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+
+
+input[type="datetime-local"],
+select {
+  padding: 0.75rem;
+  border: 1px solid #d1d5db; /* gray-300 */
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  width: 100%;
+}
+
+input[type="datetime-local"]:focus,
+select:focus {
+  outline: none;
+  border-color: #2563eb; /* blue-600 */
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.3);
+}
+
+
+
+#contact-fab {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+}
+
+#main-btn {
+  background-color: #a78bfa; /* ljubičasta */
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 56px;
+  height: 56px;
+  font-size: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+#main-btn:active {
+  transform: scale(0.95);
+}
+
+#contact-options {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  transform: translateY(20px);
+}
+
+.contact-option {
+  background-color: #c1a875; /* zlatna nijansa */
+  color: white;
+  width: 48px;
+  height: 48px;
+  margin-bottom: 10px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  font-size: 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+#contact-fab.open #contact-options {
+  opacity: 1;
+  pointer-events: all;
+  transform: translateY(0);
+}
+
+#contact-fab.open #main-btn i {
+  content: "\f00d"; /* X ikonica */
+}
+
+
+
+
+
