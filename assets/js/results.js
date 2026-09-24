@@ -8,6 +8,7 @@ const tekst = {
     mjenjac: "Mjenjač",
     klima: ["Klima", "Bez klime"],
     cijenaPoDanu: "Cijena po danu",
+    naUpit: "na upit",
     rezervisi: "Rezerviši",
     vrata: "vrata",
     godiste: "godište",
@@ -23,7 +24,6 @@ const tekst = {
     tipOpcije:{
       "Ekonomska": "Ekonomska",
       "SUV":"SUV",
-      "Luksuzna":"Luksuzna",
       "Kombi":"Kombi"
     },
     valuta: "KM",
@@ -36,6 +36,7 @@ const tekst = {
     mjenjac: "Transmission",
     klima: ["A/C", "No A/C"],
     cijenaPoDanu: "Price per day",
+    naUpit: "on request",
     rezervisi: "Reserve",
     vrata: "doors",
     godiste: "model year",
@@ -51,7 +52,6 @@ const tekst = {
     tipOpcije:{
       "Ekonomska": "Economy",
       "SUV":"SUV",
-      "Luksuzna":"Luxury",
       "Kombi":"Van"
     },
     valuta:"€",
@@ -118,7 +118,6 @@ document.getElementById("filter-sjedista").addEventListener("change", e => {
 function getBadgeColor(tip) {
   switch (tip.toLowerCase()) {
     case 'suv': return 'bg-green-500';
-    case 'luksuzna': return 'bg-purple-500';
     case 'ekonomska': return 'bg-blue-500';
     case 'kombi': return 'bg-yellow-500';
     case 'gradski': return 'bg-pink-500';
@@ -243,7 +242,7 @@ function prikaziVozilaZaPeriod(lista) {
         <hr class="my-2" />
         <div class="flex items-center justify-between">
           <div class="text-sm font-medium text-gray-600">
-           <p>${t.cijenaPoDanu}: <span class="text-blue-800 font-bold">${auto.cijena * k}&nbsp;${t.valuta}</span></p>
+           <p>${t.cijenaPoDanu}: <span class="text-blue-800 font-bold">${t.naUpit}</span></p>
 
           </div>
           <button onclick='pokreniRezervaciju(${JSON.stringify(auto).replace(/"/g, "&quot;")})'

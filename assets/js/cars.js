@@ -6,6 +6,7 @@ const tekstovi = {
     mjenjac: "Mjenjač",
     klima: ["Klima", "Bez klime"],
     cijenaPoDanu: "Cijena po danu",
+    naUpit: "na upit",
     rezervisi: "Rezerviši",
     vrata: "vrata",
     godiste: "godište",
@@ -21,7 +22,6 @@ const tekstovi = {
      tipOpcije:{
       "Ekonomska": "Ekonomska",
       "SUV":"SUV",
-      "Luksuzna":"Luksuzna",
       "Kombi":"Kombi"
     }
   },
@@ -30,6 +30,7 @@ const tekstovi = {
     mjenjac: "Transmission",
     klima: ["A/C", "No A/C"],
     cijenaPoDanu: "Price per day",
+    naUpit: "on request",
     rezervisi: "Reserve",
     vrata: "doors",
     godiste: "model year",
@@ -45,7 +46,6 @@ const tekstovi = {
     tipOpcije:{
       "Ekonomska": "Economy",
       "SUV":"SUV",
-      "Luksuzna":"Luxury",
       "Kombi":"Van"
     }
   }
@@ -54,252 +54,46 @@ const tekstovi = {
 
 
 
-let najnovijaVozila = [{
-  "naziv": "Mercedes Vito Vip 2020",
-  "tip": "Kombi",
-  "godina": 2020,
-  "gorivo": "Dizel",
-  "klima": true,
-  "mjenjac": "Automatik",
-  "sjedista": 9,
-  "cijena": 120,
-  "slike": [
-    "assets/img/Mercedes-Vito-Vip-2022-1.jpg",
-    "assets/img/Mercedes-Vito-Vip-2022-2.jpg",
-    "assets/img/Mercedes-Vito-Vip-2022-3.jpg"
-  ]
-},
-{
-  "naziv": "Mercedes V Klasa VIP",
-  "tip": "Kombi",
-  "godina": 2020,
-  "gorivo": "Dizel",
-  "klima": true,
-  "mjenjac": "Automatik",
-  "sjedista": 8,
-  "cijena": 130,
-  "slike": [
-    "assets/img/Mercedes-V-klasa-VIP-1.jpg",
-    "assets/img/Mercedes-V-klasa-VIP-2.jpg",
-    "assets/img/Mercedes-V-klasa-VIP-3.jpg"
-  ]
-},
-{
-  "naziv": "Porshe Cayenne 2012",
-  "tip": "SUV",
-  "godina": 2012,
-  "gorivo": "Benzin",
-  "klima": true,
-  "mjenjac": "Automatik",
-  "sjedista": 5,
-  "cijena": 90,
-  "slike": [
-    "assets/img/Porshe-cayenne-2012-1.jpeg",
-    "assets/img/Porshe-cayenne-2012-2.jpeg",
-    "assets/img/Porshe-cayenne-2012-3.webp"
-  ]
-},
-{
-  "naziv": "Volkswagen Touran 2020",
-  "tip": "Ekonomska",
-  "godina": 2020,
-  "gorivo": "Dizel",
-  "klima": true,
-  "mjenjac": "Automatik",
-  "sjedista": 7,
-  "cijena": 60,
-  "slike": [
-    "assets/img/Volkswagen-Touran-2020-1.jpg",
-    "assets/img/Volkswagen-Touran-2020-2.jpg",
-    "assets/img/Volkswagen-Touran-2020-3.jpg"
-  ]
-},
-{
-  "naziv": "Seat Leon 2013",
-  "tip": "Ekonomska",
-  "godina": 2013,
-  "gorivo": "Dizel",
-  "klima": true,
-  "mjenjac": "Manuelni",
-  "sjedista": 5,
-  "cijena": 30,
-  "slike": [
-    "assets/img/Seat-Leon-2013-1.jpg",
-    "assets/img/Seat-Leon-2013-2.jpg",
-    "assets/img/Seat-Leon-2013-3.jpg"
-  ]
-},
-{
-  "naziv": "Passat CC 2010",
-  "tip": "Luksuzna",
-  "godina": 2010,
-  "gorivo": "Benzin",
-  "klima": true,
-  "mjenjac": "Automatik",
-  "sjedista": 5,
-  "cijena": 35,
-  "slike": [
-    "assets/img/Passat-CC-2010-1.jpg",
-    "assets/img/Passat-CC-2010-2.jpg",
-    "assets/img/Passat-CC-2010-3.jpg"
-  ]
-}
-
-
-];
-
 let svaVozila = [
-  // === najnovijaVozila ===
   {
-    "naziv": "Mercedes Vito Vip 2020",
+    "naziv": "Mercedes-Benz Vito 116 CDI 2020",
     "tip": "Kombi",
     "godina": 2020,
     "gorivo": "Dizel",
     "klima": true,
     "mjenjac": "Automatik",
     "sjedista": 9,
-    "cijena": 120,
-    "slike": [
-      "assets/img/Mercedes-Vito-Vip-2022-1.jpg",
-      "assets/img/Mercedes-Vito-Vip-2022-2.jpg",
-      "assets/img/Mercedes-Vito-Vip-2022-3.jpg"
-    ]
+    "slike": ["assets/img/Mercedes-Vito-116-CDI-2020.jpg"]
   },
   {
-    "naziv": "Mercedes V Klasa VIP",
+    "naziv": "Mercedes-Benz Vito 114 CDI 2020",
     "tip": "Kombi",
     "godina": 2020,
     "gorivo": "Dizel",
     "klima": true,
     "mjenjac": "Automatik",
-    "sjedista": 8,
-    "cijena": 130,
-    "slike": [
-      "assets/img/Mercedes-V-klasa-VIP-1.jpg",
-      "assets/img/Mercedes-V-klasa-VIP-2.jpg",
-      "assets/img/Mercedes-V-klasa-VIP-3.jpg"
-    ]
+    "sjedista": 9,
+    "slike": ["assets/img/Mercedes-Vito-114-CDI-2020.jpg"]
   },
   {
-    "naziv": "Porshe Cayenne 2012",
-    "tip": "SUV",
-    "godina": 2012,
-    "gorivo": "Benzin",
+    "naziv": "Mercedes-Benz Vito 116 CDI 2019",
+    "tip": "Kombi",
+    "godina": 2019,
+    "gorivo": "Dizel",
     "klima": true,
     "mjenjac": "Automatik",
-    "sjedista": 5,
-    "cijena": 90,
-    "slike": [
-      "assets/img/Porshe-cayenne-2012-1.jpeg",
-      "assets/img/Porshe-cayenne-2012-2.jpeg",
-      "assets/img/Porshe-cayenne-2012-3.webp"
-    ]
+    "sjedista": 9,
+    "slike": ["assets/img/Mercedes-Vito-116-CDI-2019.jpg"]
   },
   {
-    "naziv": "Volkswagen Touran 2020",
+    "naziv": "Volkswagen Touran 2019",
     "tip": "Ekonomska",
-    "godina": 2020,
+    "godina": 2019,
     "gorivo": "Dizel",
     "klima": true,
     "mjenjac": "Automatik",
     "sjedista": 7,
-    "cijena": 60,
-    "slike": [
-      "assets/img/Volkswagen-Touran-2020-1.jpg",
-      "assets/img/Volkswagen-Touran-2020-2.jpg",
-      "assets/img/Volkswagen-Touran-2020-3.jpg"
-    ]
-  },
-  {
-    "naziv": "Seat Leon 2013",
-    "tip": "Ekonomska",
-    "godina": 2013,
-    "gorivo": "Dizel",
-    "klima": true,
-    "mjenjac": "Manuelni",
-    "sjedista": 5,
-    "cijena": 30,
-    "slike": [
-      "assets/img/Seat-Leon-2013-1.jpg",
-      "assets/img/Seat-Leon-2013-2.jpg",
-      "assets/img/Seat-Leon-2013-3.jpg"
-    ]
-  },
-  {
-    "naziv": "Passat CC 2010",
-    "tip": "Luksuzna",
-    "godina": 2010,
-    "gorivo": "Benzin",
-    "klima": true,
-    "mjenjac": "Automatik",
-    "sjedista": 5,
-    "cijena": 35,
-    "slike": [
-      "assets/img/Passat-CC-2010-1.jpg",
-      "assets/img/Passat-CC-2010-2.jpg",
-      "assets/img/Passat-CC-2010-3.jpg"
-    ]
-  },
-
-  // === ostatak ===
-  {
-    "naziv": " Mercedes Vito 2010",
-    "tip": "Kombi",
-    "godina": 2010,
-    "gorivo": "Dizel",
-    "klima": true,
-    "mjenjac": "Automatik",
-    "sjedista": 8,
-    "cijena": 60,
-    "slike": [
-      "assets/img/Mercedes-Vito-2010-1.jpg",
-      "assets/img/Mercedes-Vito-2010-2.jpg",
-      "assets/img/Mercedes-Vito-2010-3.jpg"
-    ]
-  },
-  {
-    "naziv": "Mercedes Vito 2014",
-    "tip": "Kombi",
-    "godina": 2014,
-    "gorivo": "Dizel",
-    "klima": true,
-    "mjenjac": "Automatik",
-    "sjedista": 8,
-    "cijena": 70,
-    "slike": [
-      "assets/img/Mercedes-Vito-2014-1.jpg",
-      "assets/img/Mercedes-Vito-2014-2.jpg",
-      "assets/img/Mercedes-Vito-2014-3.jpg"
-    ]
-  },
-  {
-    "naziv": "Passat 2014",
-    "tip": "Ekonomska",
-    "godina": 2014,
-    "gorivo": "Dizel",
-    "klima": true,
-    "mjenjac": "Automatik",
-    "sjedista": 5,
-    "cijena": 35,
-    "slike": [
-      "assets/img/Passat-2014-1.jpg",
-      "assets/img/Passat-2014-2.jpg",
-      "assets/img/Passat-2014-3.jpg"
-    ]
-  },
-  {
-    "naziv": "Škoda Fabia",
-    "tip": "Ekonomska",
-    "godina": 2015,
-    "gorivo": "Benzin",
-    "klima": true,
-    "mjenjac": "Manuelni",
-    "sjedista": 5,
-    "cijena": 30,
-    "slike": [
-      "assets/img/skoda.jpg",
-      "assets/img/Skoda-Fabia-2015-2.jpg"
-    ]
+    "slike": ["assets/img/Volkswagen-Touran-2019.jpg"]
   },
   {
     "naziv": "Volkswagen Touran 2015",
@@ -309,29 +103,32 @@ let svaVozila = [
     "klima": true,
     "mjenjac": "Automatik",
     "sjedista": 7,
-    "cijena": 45,
-    "slike": [
-      "assets/img/Volkswagen-Touran-2015-1.jpg",
-      "assets/img/Volkswagen-Touran-2015-2.jpg",
-      "assets/img/Volkswagen-Touran-2015-3.jpg"
-    ]
+    "slike": ["assets/img/Volkswagen-Touran-2015.jpg"]
   },
   {
-    "naziv": "Volkswagen Touran 2017",
+    "naziv": "Volkswagen Passat B7 Variant 2012",
     "tip": "Ekonomska",
-    "godina": 2017,
+    "godina": 2012,
     "gorivo": "Dizel",
     "klima": true,
-    "mjenjac": "Manuelni",
-    "sjedista": 7,
-    "cijena": 60,
-    "slike": [
-      "assets/img/Volkswagen-Touran-2017-1.jpg",
-      "assets/img/Volkswagen-Touran-2017-2.jpg",
-      "assets/img/Volkswagen-Touran-2017-3.jpg"
-    ]
+    "mjenjac": "Automatik",
+    "sjedista": 5,
+    "slike": ["assets/img/Volkswagen-Passat-B7-Variant-2012.jpg"]
+  },
+  {
+    "naziv": "Volkswagen Passat CC 2011",
+    "tip": "Ekonomska",
+    "godina": 2011,
+    "gorivo": "Dizel",
+    "klima": true,
+    "mjenjac": "Automatik",
+    "sjedista": 4,
+    "slike": ["assets/img/Volkswagen-Passat-CC-2011.jpg"]
   }
 ];
+
+// Najnovija vozila = godište 2019 i novije
+let najnovijaVozila = svaVozila.filter(v => v.godina >= 2019);
 
 let trenutnaLista = najnovijaVozila;
 
@@ -351,14 +148,9 @@ function prikaziVozila(lista) {
   const container = document.getElementById('vozila-container');
   container.innerHTML = '';
 
-  const kurs = 2;
   const t = tekstovi[trenutniJezik];
 
   lista.forEach((auto, index) => {
-    const cijenaPrikaz = trenutniJezik === "bs"
-      ? `${(auto.cijena * kurs).toFixed(2)} KM`
-      : `${auto.cijena} €`;
-
     const card = document.createElement('div');
     card.className = "bg-white max-w-sm w-full mx-auto rounded-xl shadow overflow-hidden relative transform transition-transform duration-300 hover:scale-[1.02]";
 
@@ -380,7 +172,7 @@ function prikaziVozila(lista) {
         <hr class="my-2" />
         <div class="flex items-center justify-between">
           <div class="text-sm font-medium text-gray-600">
-            <p>${t.cijenaPoDanu}: <span class="text-blue-800 font-bold">${cijenaPrikaz}</span></p>
+            <p>${t.cijenaPoDanu}: <span class="text-blue-800 font-bold">${t.naUpit}</span></p>
           </div>
           <button class="rezervisi-btn bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 text-sm"
             data-index="${index}">
@@ -419,7 +211,6 @@ function pokreniProvjeru(auto) {
 function getBadgeColor(tip) {
   switch (tip.toLowerCase()) {
     case 'suv': return 'bg-green-500';
-    case 'luksuzna': return 'bg-purple-500';
     case 'ekonomska': return 'bg-blue-500';
     case 'kombi': return 'bg-yellow-500';
     default: return 'bg-gray-500';

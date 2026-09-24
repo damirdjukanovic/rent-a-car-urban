@@ -17,13 +17,13 @@
 
     <header class="bg-white shadow fixed top-0 w-full z-50">
         <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
-            <a href="index.html"
+            <a href="index-bs.html"
                 class="text-2xl font-bold bg-gradient-to-r from-blue-900 to-sky-500 text-transparent bg-clip-text">
                 Urban Drive
             </a>
 
 
-            <a href="index.html"
+            <a href="index-bs.html"
                 class="inline-flex items-center text-sm text-blue-700 hover:text-blue-900 font-medium transition">
                 <i class="fa-solid fa-arrow-left mr-2"></i> Povratak na početnu
             </a>
@@ -281,32 +281,6 @@
                                 </div>
                             </div>
 
-                            <!-- Osiguranje -->
-                            <h3 class="font-semibold text-gray-800 mt-6 mb-2">Osiguranje</h3>
-                            <div class="grid md:grid-cols-2 gap-4">
-                                <label
-                                    class="border rounded-lg p-4 cursor-pointer hover:border-blue-500 transition block">
-                                    <div class="flex items-center mb-2 gap-2">
-                                        <input type="radio" name="osiguranje" value="osnovno" checked
-                                            class="accent-blue-600" />
-                                        <p class="font-semibold">Osnovno osiguranje</p>
-                                    </div>
-                                    <p class="text-sm text-gray-600">Pokriva osnovne štete u slučaju nezgode</p>
-                                    <p class="text-sm text-blue-600 font-semibold mt-1">Uključeno u cijenu</p>
-                                </label>
-
-                                <label
-                                    class="border rounded-lg p-4 cursor-pointer hover:border-blue-500 transition block">
-                                    <div class="flex items-center mb-2 gap-2">
-                                        <input type="radio" name="osiguranje" value="puno" class="accent-blue-600" />
-                                        <p class="font-semibold">Puno osiguranje</p>
-                                    </div>
-                                    <p class="text-sm text-gray-600">Pokriva sve vrste šteta bez učešća u šteti</p>
-                                    <p class="text-sm text-gray-800 font-bold mt-1" id="puno-osiguranje-cijena">--</p>
-
-
-                                </label>
-                            </div>
                         </div>
                         <div id="checkout-box"></div>
 
@@ -428,12 +402,12 @@ function prikaziModalRezervacije() {
 
   // Automatska redirekcija nakon 3 sekunde ako korisnik ne klikne
   setTimeout(() => {
-    window.location.href = "index.html";
+    window.location.href = "index-bs.html";
   }, 20000);
 }
 
 function zatvoriModalIRedirekcija() {
-  window.location.href = "index.html";
+  window.location.href = "index-bs.html";
 }
 
     </script>
@@ -525,7 +499,7 @@ function zatvoriModalIRedirekcija() {
         prezime: podaci.prezime,
         datum_rezervacije: `${podaci.datum_od} - ${podaci.datum_do}`,
         vozilo: podaci.vozilo,
-        cijena: parseFloat(podaci.ukupna_cijena.replace(/[^\d.]/g, "")), // čisti broj
+        cijena: podaci.cijena ?? null, // cijena na upit
         valuta: podaci.valuta
       })
     })
@@ -545,27 +519,6 @@ function zatvoriModalIRedirekcija() {
   window.posaljiRezervaciju = posaljiRezervaciju;
 </script>
 
-    <script>
-        const langAttr = document.documentElement.lang;
-        const jezik = langAttr === "en" ? "en" : "bs";
-
-        const tekst = {
-            bs: {
-                valuta: "KM",
-                kurs: 2.0
-            },
-            en: {
-                valuta: "€",
-                kurs: 1.0
-            }
-        };
-
-        const t = tekst[jezik];
-
-        // Postavi cijene dodatnih opcija
-        document.getElementById("djecije-cijena").textContent = `${(10 * t.kurs).toFixed(0)} ${t.valuta} / dan`;
-        document.getElementById("puno-osiguranje-cijena").textContent = `${(15 * t.kurs).toFixed(0)} ${t.valuta} / dan`;
-    </script>
 
 
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="bs">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8" />
@@ -17,13 +17,13 @@
 
     <header class="bg-white shadow fixed top-0 w-full z-50">
         <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
-            <a href="index-en.html"
+            <a href="index.html"
                 class="text-2xl font-bold bg-gradient-to-r from-blue-900 to-sky-500 text-transparent bg-clip-text">
                 Urban Drive
             </a>
 
 
-            <a href="index-en.html"
+            <a href="index.html"
                 class="inline-flex items-center text-sm text-blue-700 hover:text-blue-900 font-medium transition">
                 <i class="fa-solid fa-arrow-left mr-2"></i> Back to home
             </a>
@@ -294,30 +294,6 @@
                                 </div>
                             </div>
 
-                            <!-- Osiguranje -->
-                            <h3 class="font-semibold text-gray-800 mt-6 mb-2">Insurance</h3>
-                            <div class="grid md:grid-cols-2 gap-4">
-                                <label
-                                    class="border rounded-lg p-4 cursor-pointer hover:border-blue-500 transition block">
-                                    <div class="flex items-center mb-2 gap-2">
-                                        <input type="radio" name="osiguranje" value="osnovno" checked
-                                            class="accent-blue-600" />
-                                        <p class="font-semibold">Basic Insurance</p>
-                                    </div>
-                                    <p class="text-sm text-gray-600">Covers basic damages in case of an accident</p>
-                                    <p class="text-sm text-blue-600 font-semibold mt-1">Included in price</p>
-                                </label>
-
-                                <label
-                                    class="border rounded-lg p-4 cursor-pointer hover:border-blue-500 transition block">
-                                    <div class="flex items-center mb-2 gap-2">
-                                        <input type="radio" name="osiguranje" value="puno" class="accent-blue-600" />
-                                        <p class="font-semibold">Full Insurance</p>
-                                    </div>
-                                    <p class="text-sm text-gray-600">Covers all types of damages with no deductible</p>
-                                    <p class="text-sm text-gray-800 font-bold mt-1">15 € / day</p>
-                                </label>
-                            </div>
                         </div>
                         <div id="checkout-box"></div>
 
@@ -516,7 +492,7 @@
                     prezime: podaci.prezime,
                     datum_rezervacije: `${podaci.datum_od} - ${podaci.datum_do}`,
                     vozilo: podaci.vozilo,
-                    cijena: parseFloat(podaci.ukupna_cijena.replace("€", "").trim()),
+                    cijena: podaci.cijena ?? null, // price on request
                     valuta: podaci.valuta
                 })
             })
@@ -544,12 +520,12 @@
 
         // Automatska redirekcija na EN home nakon 3 sekunde
         setTimeout(() => {
-            window.location.href = "index-en.html";
+            window.location.href = "index.html";
         }, 20000);
     }
 
     function zatvoriModalIRedirekcija() {
-        window.location.href = "index-en.html";
+        window.location.href = "index.html";
     }
 </script>
 

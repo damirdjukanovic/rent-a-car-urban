@@ -14,19 +14,11 @@ const trajanjeDana = Math.ceil(razlikaMS / (1000 * 60 * 60 * 24));
 const jezik = window.location.pathname.includes("reservation-en") ? "en" : "bs";
 
 
-function izracunajUkupnuCijenu(vozilo, trajanjeDana) {
-  const djecije = document.querySelector('input[name="djecije_sjediste"]')?.checked;
-  const osiguranje = document.querySelector('input[name="osiguranje"]:checked')?.value;
+// Cijena vozila je "na upit" - ukupna cijena se ne računa
+const naUpit = jezik === "en" ? "on request" : "na upit";
 
-  let dodatak = 0;
-  if (djecije) dodatak += 10 * trajanjeDana;
-  if (osiguranje === "puno") dodatak += 15 * trajanjeDana;
-
-  let total = vozilo.cijena * trajanjeDana + dodatak;
-  if (jezik === "bs") total *= 2;
-
-  let valuta = jezik === "bs" ? "KM" : "€";
-  return `${total.toFixed(2)} ${valuta}`;
+function izracunajUkupnuCijenu() {
+  return naUpit;
 }
 
 
@@ -36,8 +28,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const vozilo = JSON.parse(localStorage.getItem("odabranoVozilo"));
 
   if (!vozilo) {
-    alert("Nijedno vozilo nije odabrano!");
-    window.location.href = "index.html";
+    alert(jezik === "en" ? "No vehicle selected!" : "Nijedno vozilo nije odabrano!");
+    window.location.href = jezik === "en" ? "index.html" : "index-bs.html";
     return;
   }
 
@@ -74,12 +66,8 @@ document.addEventListener("DOMContentLoaded", () => {
       <div class="text-sm font-medium text-gray-600">
         <p>
   ${jezik === "en" ? "Price per day:" : "Cijena po danu:"}
-  <span class="text-blue-800 font-bold">
-    ${jezik === "bs" ? (vozilo.cijena * 2).toFixed(2) + " KM" : vozilo.cijena + " €"}
-  </span>
+  <span class="text-blue-800 font-bold">${naUpit}</span>
 </p>
-
-<p>${jezik === "en" ? "Total price:" : "Ukupna cijena:"} <span class="text-blue-800 font-bold">${izracunajUkupnuCijenu(vozilo, trajanjeDana)}</span></p>
       </div>
     </div>
   </div>
@@ -155,14 +143,14 @@ document.addEventListener("DOMContentLoaded", () => {
     <h2 class="text-lg font-bold text-gray-900 mb-4">${jezik === "en" ? "Review and Confirmation" : "Pregled i potvrda"}</h2>
     <div class="flex justify-between text-sm text-gray-700 mb-2">
   <span>${jezik === "en" ? `Vehicle rental (${trajanjeDana} ${trajanjeDana === 1 ? 'day' : 'days'})` : `Najam vozila (${trajanjeDana} ${trajanjeDana === 1 ? 'dan' : 'dana'})`}</span>
-  <span class="font-semibold">${(vozilo.cijena * trajanjeDana * (jezik === "bs" ? 2.0 : 1.0)).toFixed(2)} ${jezik === "bs" ? "KM" : "€"}</span>
+  <span class="font-semibold">${naUpit}</span>
 
 </div>
 
     <hr class="my-2">
     <div class="flex justify-between text-base font-semibold text-gray-900 mb-4">
       <span>${jezik === "en" ? "Total to Pay" : "Ukupno za plaćanje"}</span>
-      <span class="text-blue-700">${izracunajUkupnuCijenu(vozilo, trajanjeDana)}</span>
+      <span class="text-blue-700">${naUpit}</span>
 
     </div>
     <div class="space-y-2 text-sm mb-4">
@@ -185,21 +173,6 @@ document.addEventListener("DOMContentLoaded", () => {
     </div>
   </div>
 `;
-
-  function osvjeziCheckout() {
-    const prikaz = document.getElementById("checkout-box").querySelector(".text-blue-700");
-    if (prikaz) {
-      prikaz.textContent = izracunajUkupnuCijenu(vozilo, trajanjeDana);
-    }
-  }
-
-  // Osluškivanje promjena na dodatnim opcijama
-  document.querySelectorAll('input[name="osiguranje"]').forEach(input => {
-    input.addEventListener("change", osvjeziCheckout);
-  });
-  document.querySelector('input[name="djecije_sjediste"]')?.addEventListener("change", osvjeziCheckout);
-
-
 
   const dugmePotvrdi = document.getElementById('potvrdiBtn');
   const forma = document.getElementById('reservation-form');
@@ -234,13 +207,12 @@ document.addEventListener("DOMContentLoaded", () => {
       vozacka: formData.get("vozacka"),
       drzava: formData.get("drzava"),
       djecije_sjediste: document.querySelector('input[name="djecije_sjediste"]')?.checked ? "Da" : "Ne",
-      osiguranje: formData.get("osiguranje"),
       vozilo: vozilo.naziv,
       datum_od: odDate.toLocaleDateString("bs-BA"),
       datum_do: doDate.toLocaleDateString("bs-BA"),
       lokacija: lokacija,
-        ukupna_cijena: izracunajUkupnuCijenu(vozilo, trajanjeDana) ,
-        cijena: Number(izracunajUkupnuCijenu(vozilo, trajanjeDana).replace(/[^\d.]/g, '')),
+        ukupna_cijena: naUpit,
+        cijena: null,
 
         valuta: jezik === "bs" ? "KM" : "€"  // ✅ OVO DODAJEŠ
 
@@ -339,7 +311,7 @@ document.getElementById("reservation-form").addEventListener("submit", function 
     datum_od: localStorage.getItem("datumOd") || "N/A",
     datum_do: localStorage.getItem("datumDo") || "N/A",
     vozilo: localStorage.getItem("vozilo") || "N/A",
-    ukupna_cijena: localStorage.getItem("ukupnaCijena") || "0 €"
+    ukupna_cijena: naUpit
   };
 
   posaljiRezervaciju(podaci, form);
@@ -403,8 +375,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }[lang === "en" ? "en" : "bs"];
 
   const djecijeEl = document.getElementById("djecije-cijena");
-  const osiguranjeEl = document.getElementById("puno-osiguranje-cijena");
 
   if (djecijeEl) djecijeEl.textContent = `${(10 * t.kurs).toFixed(0)} ${t.valuta} / dan`;
-  if (osiguranjeEl) osiguranjeEl.textContent = `${(15 * t.kurs).toFixed(0)} ${t.valuta} / dan`;
 });
