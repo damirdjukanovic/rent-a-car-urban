@@ -130,17 +130,17 @@ let svaVozila = [
 // Najnovija vozila = godište 2019 i novije
 let najnovijaVozila = svaVozila.filter(v => v.godina >= 2019);
 
-let trenutnaLista = najnovijaVozila;
+let trenutnaLista = svaVozila;
 
 let trenutniTip = 'Svi';
 let trenutniMjenjac = 'Svi';
-let trenutniIzbor = 'najnovija'; // prati da li su prikazana najnovija ili sva vozila
+let trenutniIzbor = 'sva'; // prati da li su prikazana najnovija ili sva vozila
 
 
 
 
 if (document.getElementById('vozila-container')) {
-  prikaziVozila(najnovijaVozila);
+  prikaziVozila(svaVozila);
 }
 
 function prikaziVozila(lista) {
