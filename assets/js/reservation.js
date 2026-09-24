@@ -34,6 +34,12 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   slike = Array.isArray(vozilo.slike) && vozilo.slike.length > 0 ? vozilo.slike : [vozilo.slika];
+  const imaViseSlika = slike.length > 1;
+
+  // Chevroni u modalu samo ako ima više slika
+  document.querySelectorAll('#image-modal button[onclick^="promijeniSlikuModal"]').forEach(btn => {
+    btn.classList.toggle("hidden", !imaViseSlika);
+  });
 
   document.getElementById("vozilo-detalji").innerHTML = `
   <div class="bg-white rounded-xl shadow overflow-hidden w-full relative">
@@ -43,14 +49,15 @@ document.addEventListener("DOMContentLoaded", () => {
     <div class="relative w-full h-56">
       <img id="vozilo-slider-img" src="${slike[0]}" alt="${vozilo.naziv}" 
           class="w-full h-56 object-cover rounded-t-xl cursor-pointer" />
-      <button onclick="promijeniSliku(-1)" 
+      ${imaViseSlika ? `
+      <button onclick="promijeniSliku(-1)"
               class="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 text-gray-800 rounded-full p-2 shadow hover:bg-white">
         <i class="fa-solid fa-chevron-left"></i>
       </button>
-      <button onclick="promijeniSliku(1)" 
+      <button onclick="promijeniSliku(1)"
               class="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 text-gray-800 rounded-full p-2 shadow hover:bg-white">
         <i class="fa-solid fa-chevron-right"></i>
-      </button>
+      </button>` : ''}
     </div>
     <div class="p-6">
       <h2 class="text-xl font-bold text-gray-900">${vozilo.naziv}</h2>
