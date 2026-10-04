@@ -52,10 +52,9 @@ const tekstovi = {
 };
 
 
-
-
 let svaVozila = [
   {
+    "id": 1,
     "naziv": "Mercedes-Benz Vito 116 CDI 2020",
     "tip": "Kombi",
     "godina": 2020,
@@ -66,6 +65,7 @@ let svaVozila = [
     "slike": ["assets/img/Mercedes-Vito-116-CDI-2020.jpg"]
   },
   {
+    "id": 2,
     "naziv": "Mercedes-Benz Vito 114 CDI 2020",
     "tip": "Kombi",
     "godina": 2020,
@@ -76,6 +76,7 @@ let svaVozila = [
     "slike": ["assets/img/Mercedes-Vito-114-CDI-2020.jpg"]
   },
   {
+    "id": 3,
     "naziv": "Mercedes-Benz Vito 116 CDI 2019",
     "tip": "Kombi",
     "godina": 2019,
@@ -86,6 +87,7 @@ let svaVozila = [
     "slike": ["assets/img/Mercedes-Vito-116-CDI-2019.jpg"]
   },
   {
+    "id": 4,
     "naziv": "Volkswagen Touran 2019",
     "tip": "Ekonomska",
     "godina": 2019,
@@ -96,6 +98,7 @@ let svaVozila = [
     "slike": ["assets/img/Volkswagen-Touran-2019.jpg"]
   },
   {
+    "id": 5,
     "naziv": "Volkswagen Touran 2015",
     "tip": "Ekonomska",
     "godina": 2015,
@@ -106,6 +109,7 @@ let svaVozila = [
     "slike": ["assets/img/Volkswagen-Touran-2015.jpg"]
   },
   {
+    "id": 6,
     "naziv": "Volkswagen Passat B7 Variant 2012",
     "tip": "Ekonomska",
     "godina": 2012,
@@ -116,6 +120,7 @@ let svaVozila = [
     "slike": ["assets/img/Volkswagen-Passat-B7-Variant-2012.jpg"]
   },
   {
+    "id": 7,
     "naziv": "Volkswagen Passat CC 2011",
     "tip": "Ekonomska",
     "godina": 2011,
@@ -126,6 +131,9 @@ let svaVozila = [
     "slike": ["assets/img/Volkswagen-Passat-CC-2011.jpg"]
   }
 ];
+
+
+
 
 // Najnovija vozila = godište 2019 i novije
 let najnovijaVozila = svaVozila.filter(v => v.godina >= 2019);

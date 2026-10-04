@@ -207,6 +207,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const formData = new FormData(forma);
     const podaci = {
+      vozilo_id: vozilo.id,
+      broj_putnika: parseInt(localStorage.getItem("brojPutnika")) || 1,
       ime: formData.get("ime"),
       prezime: formData.get("prezime"),
       email: formData.get("email"),

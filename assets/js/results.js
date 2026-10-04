@@ -28,9 +28,9 @@ const tekst = {
     },
     valuta: "KM",
     kurs:2.00
-  },
+  },  
   en: {
-      zauzeto: "Unavailable",
+    zauzeto: "Unavailable",
     dostupno: "Available",
     sjedista: "seats",
     mjenjac: "Transmission",
@@ -77,21 +77,21 @@ document.getElementById("form-datum-do").value = localStorage.getItem("datumDo")
 document.getElementById("form-putnici").value = localStorage.getItem("brojPutnika");
 
 async function ucitajRezervacije() {
-  const res = await fetch("https://retoolapi.dev/qSVURz/urbandrive");
+  const res = await fetch("https://urban-drive-backend.onrender.com/rezervacije");
   const data = await res.json();
+
   rezervacije = data.map(r => {
-    const [odStr, doStr] = r.datum_rezervacije.split(" - ");
     return {
-      naziv: r.vozilo,
-      datumOd: new Date(odStr),
-      datumDo: new Date(doStr)
+      voziloId: Number(r.vozilo_id),
+      datumOd: new Date(r.datum_od),
+      datumDo: new Date(r.datum_do)
     };
   });
 }
 
 function jeZauzeto(auto, odPerioda, doPerioda) {
   return rezervacije.some(r => {
-    if (r.naziv !== auto.naziv) return false;
+    if (r.voziloId !== Number(auto.id)) return false;
     return !(doPerioda <= r.datumOd || odPerioda >= r.datumDo);
   });
 }
@@ -282,4 +282,3 @@ document.getElementById("search-update-form").addEventListener("submit", functio
   await ucitajRezervacije();
   filtrirajIPrikazi();
 })();
-

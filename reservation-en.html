@@ -472,39 +472,50 @@
         emailjs.init("IMvIyvVHe7lVkbGYO");
 
         function posaljiRezervaciju(podaci, forma) {
-            // 1. Pošalji email putem EmailJS
-            emailjs.send("service_cpbz1kt", "template_828nc1l", podaci)
-                .then(() => {
-                    console.log("Email poslan");
-                })
-                .catch((error) => {
-                    console.error("Greška pri slanju emaila:", error);
-                });
-
-            // 2. Pošalji podatke na Retool API
-            fetch("https://retoolapi.dev/qSVURz/urbandrive", {
+            // 1. Save reservation to the database (Express + Neon)
+            fetch("https://urban-drive-backend.onrender.com/rezervacije", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
+                    vozilo_id: podaci.vozilo_id,
                     ime: podaci.ime,
                     prezime: podaci.prezime,
-                    datum_rezervacije: `${podaci.datum_od} - ${podaci.datum_do}`,
-                    vozilo: podaci.vozilo,
+                    email: podaci.email,
+                    telefon: podaci.telefon,
+                    vozacka: podaci.vozacka,
+                    drzava: podaci.drzava,
+                    lokacija: podaci.lokacija,
+                    datum_od: localStorage.getItem("datumOd"),
+                    datum_do: localStorage.getItem("datumDo"),
+                    broj_putnika: podaci.broj_putnika,
+                    djecije_sjediste: podaci.djecije_sjediste === "Da",
                     cijena: podaci.cijena ?? null, // price on request
                     valuta: podaci.valuta
                 })
             })
                 .then((res) => {
-                    if (!res.ok) throw new Error("Greška prilikom slanja.");
-                    prikaziModalRezervacije();
+                    if (res.status === 409) {
+                        throw new Error("The vehicle is already booked for the selected period.");
+                    }
+                    if (!res.ok) {
+                        throw new Error("Error submitting reservation.");
+                    }
 
+                    // 2. Send email only after the reservation is saved
+                    return emailjs.send("service_cpbz1kt", "template_828nc1l", podaci)
+                        .catch((error) => {
+                            console.error("Reservation saved, but email was not sent:", error);
+                        });
+                })
+                .then(() => {
+                    prikaziModalRezervacije();
                     forma.reset();
                 })
                 .catch((err) => {
                     console.error(err);
-                    alert("Greška prilikom slanja rezervacije.");
+                    alert(err.message);
                 });
         }
 

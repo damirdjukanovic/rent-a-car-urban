@@ -798,7 +798,7 @@
 
   <script>
     async function ucitajRezervacije() {
-      const res = await fetch("https://retoolapi.dev/qSVURz/urbandrive");
+      const res = await fetch("https://urban-drive-backend.onrender.com/rezervacije");
       const data = await res.json();
       return data; // niz rezervacija
     }
@@ -831,18 +831,17 @@
     }
 
 
-    async function jeZauzeto(naziv, od, doVracanja) {
+    async function jeZauzeto(voziloId, od, doVracanja) {
       const rezervacije = await ucitajRezervacije();
 
       const odDate = new Date(od);
       const doDate = new Date(doVracanja);
 
       return rezervacije.some(r => {
-        if (!r.vozilo || r.vozilo.trim().toLowerCase() !== naziv.trim().toLowerCase()) return false;
+        if (Number(r.vozilo_id) !== Number(voziloId)) return false;
 
-        const [rOdStr, rDoStr] = r.datum_rezervacije.split(" - ");
-        const rOd = new Date(rOdStr);
-        const rDo = new Date(rDoStr);
+        const rOd = new Date(r.datum_od);
+        const rDo = new Date(r.datum_do);
 
         return odDate < rDo && doDate > rOd;
       });
@@ -868,7 +867,7 @@
         return;
       }
 
-      const zauzeto = await jeZauzeto(vozilo.naziv, od, doDatum);
+      const zauzeto = await jeZauzeto(vozilo.id, od, doDatum);
 
 
       const provjeriBtn = document.querySelector('#provjera-form button[type="submit"]');
