@@ -469,7 +469,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script>
-        emailjs.init("IMvIyvVHe7lVkbGYO");
+        emailjs.init("IclSfzQUPmq-pRNxO");
 
         function posaljiRezervaciju(podaci, forma) {
             // 1. Save reservation to the database (Express + Neon)
@@ -504,7 +504,7 @@
                     }
 
                     // 2. Send email only after the reservation is saved
-                    return emailjs.send("service_cpbz1kt", "template_828nc1l", podaci)
+                    return emailjs.send("service_kbwbz0t", "template_92iae95", podaci)
                         .catch((error) => {
                             console.error("Reservation saved, but email was not sent:", error);
                         });
